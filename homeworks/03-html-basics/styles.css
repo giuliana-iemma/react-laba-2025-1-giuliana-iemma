@@ -90,7 +90,7 @@ form{
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: rem;
+    gap: .2rem;
     border: 1px solid grey;
     border-radius: 1rem;
     padding: 2rem;
