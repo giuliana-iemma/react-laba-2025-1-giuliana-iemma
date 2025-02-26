@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Giuliana - Contact me</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1>Contact Me</h1>
+
+            <form action="thankyou.html" method="get" onsubmit="alert('Thank you! You have succesfully submitted the form. I will contact you ASAP')">
+                <label for="first-name">First Name <span class="mandatory">(required)</span></label>
+                <input type="text" id="first-name" name="first_name" placeholder="Your name here" required>
+    
+                <label for="last-name">Last Name <span class="mandatory">(required)</span></label>
+                <input type="text" id="last-name" name="last_name" placeholder="Your last name here" required >
+    
+                <label for="phone-number">Phone number <span class="mandatory">(required)</span></label>
+                <input name="phone_number" id="phone-number" type="tel" placeholder="(Your phone number here)" pattern="[0-9]+" title="Only numbers are allowed" required>
+    
+                <label for="country">Country <span class="mandatory">(required)</span></label>
+                <select name="country" id="country" required >
+                    <option value="" disabled selected>Select your country</option>
+                    <option value="us">United States</option>
+                    <option value="cn">China</option>
+                    <option value="in">India</option>
+                    <option value="jp">Japan</option>
+                    <option value="de">Germany</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="fr">France</option>
+                    <option value="br">Brazil</option>
+                    <option value="it">Italy</option>
+                    <option value="ca">Canada</option>
+                    <option value="ru">Russia</option>
+                    <option value="au">Australia</option>
+                    <option value="es">Spain</option>
+                    <option value="mx">Mexico</option>
+                    <option value="kr">South Korea</option>
+                    <option value="id">Indonesia</option>
+                    <option value="tr">Turkey</option>
+                    <option value="sa">Saudi Arabia</option>
+                    <option value="za">South Africa</option>
+                    <option value="ar">Argentina</option>
+                    <option value="nl">Netherlands</option>
+                    <option value="ch">Switzerland</option>
+                    <option value="se">Sweden</option>
+                    <option value="pl">Poland</option>
+                    <option value="be">Belgium</option>
+                    <option value="th">Thailand</option>
+                    <option value="vn">Vietnam</option>
+                    <option value="eg">Egypt</option>
+                    <option value="ng">Nigeria</option>
+                    <option value="pk">Pakistan</option>           
+                </select>
+    
+                <label for="message">Enter your message <span class="required-tag">(required)</span></label>
+                <textarea name="message" id="message" placeholder="Your message here"></textarea>
+    
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        
+    </main>
+
+    <footer></footer>
+</body>
+</html>
