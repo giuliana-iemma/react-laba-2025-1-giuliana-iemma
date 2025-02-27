@@ -21,17 +21,16 @@
             <h1>Contact Me</h1>
 
             <form action="thankyou.html" method="get" onsubmit="alert('Thank you! You have succesfully submitted the form. I will contact you ASAP')">
-                <label for="first-name">First Name <span class="mandatory">(required)</span></label>
-                <input type="text" id="first-name" name="first_name" placeholder="Your name here" required>
+                
+                <label for="name">Fullname*</label>
+                <input type="text" id="name" name="first_name" placeholder="Your name.." required>
+                <input type="text"name="last_name" placeholder="Your last name.." required >
     
-                <label for="last-name">Last Name <span class="mandatory">(required)</span></label>
-                <input type="text" id="last-name" name="last_name" placeholder="Your last name here" required >
+                <label for="phone-number">Phone number*</label>
+                <input name="phone_number" id="phone-number" type="tel" placeholder="Your phone.." pattern="[0-9]+" title="Only numbers are allowed" required>
     
-                <label for="phone-number">Phone number <span class="mandatory">(required)</span></label>
-                <input name="phone_number" id="phone-number" type="tel" placeholder="(Your phone number here)" pattern="[0-9]+" title="Only numbers are allowed" required>
-    
-                <label for="country">Country <span class="mandatory">(required)</span></label>
-                <select name="country" id="country" required >
+                <label for="country">Country</label>
+                <select name="country" id="country">
                     <option value="" disabled selected>Select your country</option>
                     <option value="us">United States</option>
                     <option value="cn">China</option>
@@ -65,8 +64,7 @@
                     <option value="pk">Pakistan</option>           
                 </select>
     
-                <label for="message">Enter your message <span class="required-tag">(required)</span></label>
-                <textarea name="message" id="message" placeholder="Your message here"></textarea>
+                <textarea name="message" id="message" placeholder="Your message.."></textarea>
     
                 <button type="submit">Submit</button>
             </form>
