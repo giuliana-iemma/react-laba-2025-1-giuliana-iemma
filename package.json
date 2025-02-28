@@ -6,11 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky"
   },
-  "repository": {
-    "type": "git",
-    "url": "solvd-react-laba-2025"
-  },
-  "author": "Giuliana Iemma",
+  "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
