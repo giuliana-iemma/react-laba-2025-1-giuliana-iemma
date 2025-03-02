@@ -1,282 +1,442 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+
 }
 
-:root{
-    --background-light: #E9EBEC;
-    --background-light2: #FFFFFF;
-    --content-color-light: #575757; 
-    --content-color-light2: #3D3D3D;
-    --content-color-light3: #19191B;
-    --highlight-color-light: #FBD144;
-    --background-dark: #0C151D;
-    --background-dark2: #171F26;
-    --content-color-dark1: #A3ABB2;
-    --content-color-dark2: #F1F2F4;
-    --highlight-color-dark: #FFE071;
+:root {
+  --background-lm: #e9ebec;
+  --background-lm-light: #ffffff;
+  --content-color-lm-light: #575757;
+  --content-color-lm: #3d3d3d;
+  --content-color-lm-dark: #19191b;
+  --highlight-color-lm: #fbd144;
+  --background-dm-dark: #0c151d;
+  --background-dm-light: #171f26;
+  --content-color-dm-dark: #a3abb2;
+  --content-color-dm-light: #f1f2f4;
+  --highlight-color-dm: #ffe071;
 }
 
-body{
-    background-color: var(--background-light);
-    font-family: "Poppins", sans-serif;
+body {
+  background-color: var(--background-lm);
 }
 
-body.dark-mode{
-    background-color: var(--background-dark);
+#container {
+  max-width: 760px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+  color: #575757;
+  font-size: 22px;
 }
 
-#container{
-    max-width: 760px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 500;
-    color: #575757;
-    font-size: 22px;
+#theme-toggle {
+  background-color: var(--background-lm-light);
+  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  margin-top: 33px;
+  cursor: pointer;
 }
 
-#container.dark-mode{
-    color: var(--content-color-dark1);
+.theme-toggle__text {
+  display: none;
 }
 
-/* .theme-toggle {
-display: flex;
-justify-content: center;
-margin-top: 33px;
-border: 1px solid #E7E7E7;
-}
- */
-/* .theme-toggle__label--hidden{
-    display: none;
-} */
-
-/* .theme-toggle .theme-toggle__label{
-    display: inline-block;
-    background-color: white;
-    width: 80px;
-    height: 80px;
-    border-radius: 100%; 
-    background-image: url(../assets/icons/dark-light-mode-icon.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-} */
-
-/* .theme-toggle__input--hidden{
-     display: none;
-} */
-
-#theme-toggle{
-    background-color: var(--background-light2);
-    border: none;
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    margin-top: 33px;
-    cursor: pointer;
+.theme-toggle__image--lm{
+display: none;
 }
 
-.theme-toggle__text{
-    display: none;
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+ .profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 631px;
+  height: fit-content;
+  margin-top: 65px;
 }
 
-#profile-info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    width: 631px;
-    height: fit-content;
-    margin-top: 65px;
+.profile .profile__image-container {
+  background-color: white;
+  border: 4px solid #f7d039;
+  width: 215px;
+  height: 215px;
+  padding: calc(215px - 192px);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#profile-info .profile-image{
-    background-color: white;
-    border: 4px solid #F7D039;
-    width: 215px;
-    height: 215px;
-    padding: calc(215px - 192px);
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
+.profile .profile__image-picture {
+  width: 192px;
+  height: 192px;
+  border-radius: 100%;
 }
 
-#profile-info .profile-image .profile-image__image{
-    width: 192px;
-    height: 192px;
-    border-radius: 100%;
+.profile__info .profile__headline {
+  font-size: 46px;
+  line-height: 69px;
+  font-weight: 500;
+  color: #3d3d3d;
 }
 
-
-.info .info__headline {
-    font-size: 46px;
-    line-height: 69px;
-    font-weight: 500;
-    color: #3d3d3d;
+.profile__info .profile__subheadline {
+  line-height: 33px;
+  margin-top: 3px;
+  margin-bottom: 12px;
 }
 
-.info .info__subheadline{
-    line-height: 33px;
-    margin-top: 3px;
-    margin-bottom: 12px;
+.social-media {
+  display: flex;
+  gap: 26px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.social-media{
-    display: flex;
-    gap: 26px;
-    justify-content: flex-start;
-    align-items: center;
+.social-media.social-media--dm{
+  display: none; 
+ }
+
+.social-media__link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
 }
 
-.social-media__link{
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
+.social-media__icon {
+  width: 90%; /* Doubt */
+  object-fit: contain;
 }
 
-.social-media__link__image{
-    width: 80%; /* Doubt */
-    object-fit: contain;
+.profile__facts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  width: 634px;
+  gap: 90px;
+  padding-block: 20px;
+  padding-inline: 2px;
 }
 
-.profile-facts{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 48px;
-    width: 634px;
-    gap: 90px;
-    padding-block: 20px;
-    padding-inline:2px;
+.profile__facts .profile__facts-paragraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.profile-facts__paragraph{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.profile__facts .profile__facts-number {
+  color: #3a3a3a;
+  font-size: 24px;
 }
 
-.profile-facts__paragraph .profile-facts__paragraph__number{
-    color: #3A3A3A;
-    font-size: 24px;
+.profile__contact {
+  display: flex;
+  justify-content: center;
+  margin-top: 47px;
+  gap: 38px;
 }
 
-.contact{
-display: flex;
-justify-content: center;
-margin-top:47px;
-gap: 38px;
+.btn {
+  font-family: 'Poppins', sans-serif;
+  padding: 24px;
+  text-decoration: none;
+  color: #3d3d3d;
+  min-width: 290px;
+  height: 80px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* border: 1px solid #3E64AA; */ /* Doubt: This is in the Figma file but it's not really seen. Should we add it or not? */
+  border: none;
 }
 
-.btn{
-    font-family: "Poppins", sans-serif;
-    padding: 24px;
-    text-decoration: none;
-    color: #3D3D3D;
-    min-width: 290px;
-    height: 80px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    /* border: 1px solid #3E64AA; */ /* Doubt: This is in the Figma file but it's not really seen. Should we add it or not? */
-    border: none;
+.btn.btn--highlight {
+  background-color: #fbd144;
+  border: none;
 }
 
-.btn.btn--highlight{
-    background-color: #FBD144;
-    border: none;
+.tabs-container {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  padding-block: 15px;
+  padding-inline: 24px;
+  background-color: #ffffff;
+  margin-top: 86px;
+  border-radius: 20px;
+  width: 330px;
+  height: 64px;
 }
 
-.tabs-container{
-    display: flex;
-    justify-content: stretch;
-    align-items: stretch;
-    padding-block: 15px;
-    padding-inline: 24px;
-    width: 760px;
-    height: 110px;
-    background-color: #FFFFFF;
-    margin-top: 86px;
-    border-radius: 20px;
+.btn.btn--tab {
+  width: 100%;
+  color: #19191b;
+  font-weight: 500;
+  font-size: 1em;
+  text-align: center;
+  line-height: 33px;
 }
 
-.btn.btn--tab{
-    width: 100%;
-    color: #19191B;
-    font-weight: 500;
-    font-size: 1em;
-    text-align: center;
-    line-height: 33px;
-}
-
-.btn.btn--tab.active{
-    background-color: #D7D7D7;
-    /* border: 1px solid #3E64AA; */
+.btn.btn--tab.active {
+  background-color: #d7d7d7;
+  /* border: 1px solid #3E64AA; */
 }
 
 /* .headline.headline--hidden{
     display: none;
 } */
 
-#portfolio{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 32px;
-    border-radius: 20px;
-    margin-top: 76px;
+#portfolio {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  border-radius: 20px;
+  margin-top: 76px;
 }
 
-#portfolio .portfolio__link{
-    display: flex;
-    max-width: 362px;
-    width: 100%;
-    height: 226px;
+#portfolio .portfolio__link {
+  display: flex;
+  max-width: 362px;
+  width: 100%;
+  height: 226px;
 }
 
-.portfolio__link .portfolio__link__image{
-    object-fit: cover;
-    border-radius: 15px;
-    width: 100%;
-    filter: brightness(80%);
-    /* filter: blur(4px); */
-    /* min-height: 100%; */
+.portfolio__link .portfolio__link-image {
+  object-fit: cover;
+  border-radius: 15px;
+  width: 100%;
+  filter: brightness(80%);
+  
 }
 
-.footer{
-    display: flex;
-    justify-content: center; /* Doubt: This isn't centered in the design. Should we center it? */
-    margin-top: 78px;
-    margin-bottom: 80px;
-    /* margin-left: 199px; */
-    
+.footer {
+  display: flex;
+  justify-content: center; /* Doubt: This isn't centered in the design. Should we center it? */
+  margin-top: 78px;
+  margin-bottom: 80px;
+  /* margin-left: 199px; */
 }
 
-.footer .footer__copyright{
-    color: #575757;
-    font-weight: 500;
-    font-size: 22px;
+.footer .footer__copyright {
+  color: #575757;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+/* Dark mode */
+body.dark-mode {
+  background-color: var(--background-dm-dark);
+}
+
+body.dark-mode #theme-toggle{
+  background-color: var(--background-dm-light);
+}
+
+body.dark-mode .theme-toggle__image--dm {
+  display: none;
+}
+
+body.dark-mode .theme-toggle__image--lm {
+  display: inline-block;
+}
+
+#container.dark-mode{
+  color: var(--content-color-dm-dark);
+}
+
+#container.dark-mode .profile__image-container{
+  border: var(--highlight-color-dm) 4px solid;
+}
+
+#container.dark-mode .profile__info .profile__headline{
+  color:  var(--content-color-dm-light);
+}
+
+#container.dark-mode .social-media.social-media--dm{
+  display: flex;
+}
+
+#container.dark-mode .social-media.social-media--lm{
+  display: none;
+}
+
+#container.dark-mode .profile__facts-number{
+  color: var(--content-color-dm-dark);
+}
+
+#container.dark-mode .btn.btn--highlight{
+  background-color: var(--highlight-color-dm);
+}
+
+#container.dark-mode .tabs-container{
+  background-color: var(--background-dm-light);
+}
+
+#container.dark-mode .btn--tab.active{
+  background-color: var(--background-dm-dark);
+  color: var(--content-color-dm-dark);
+}
+
+#container.dark-mode .btn--tab {
+  background-color: transparent;
+  color: var(--content-color-dm-dark);
+}
+
+#container.dark-mode .footer__copyright{
+  color: var(--content-color-dm-dark);
 }
 
 @media (max-width: 575px) {
+  body{
+    font-size: 16px;
+  }
 
+  #container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 575px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  #theme-toggle {
+    max-width: 48px;
+    max-height: 48px;
+  }
+
+  .theme-toggle__image{
+    max-width: 24px;
+    max-height: 24px;
+  }
+
+  .profile{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile__image-container{
+    max-width: 124px;
+    max-height: 124px;
+  }
+
+ .profile__image-picture{
+    max-width: 107px;
+    max-height: 107px;
+  }
+
+  .profile__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile__info .profile__headline{
+    font-size: 32px;
+    line-height: 48px; /* Doubt: is it better to use rem or px? */
+  }
+
+  .profile__info  .profile__subheadline{
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .social-media{
+    margin-top: 20px;
+  }
+
+  .social-media__link{
+    max-width: 24px;
+    max-height: 24px;
+  }
+
+  .social-media__icon{
+    max-width: 20px;
+  }
+
+  .profile__facts{
+    max-width: 575px;
+    width: 100%;
+    gap: 27px;
+  }
+
+  .profile__facts .profile__facts-paragraph{
+    font-size: 14px;
+    max-width: 103px;
+  }
+  
+  .profile__facts .profile__facts-number{
+    font-size: 16px;
+  }
+
+  .profile__contact{
+    width: 100%;
+    display: flex;
+    gap: 14px;
+    padding-block: 18px;
+    padding-inline: 20px;
+  }
+
+  .btn{
+    min-width: 158px;
+    height: 44px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .btn .btn__image{
+    width: 1rem;
+  }
+
+  .tabs-container{
+    margin-block: 10px;
+    margin-inline: 20px;
+    padding-inline: 6.5px;
+    padding-block: 6.85px;
+    gap: 9px;
+    border-radius: 10px;
+    justify-content: space-around;
+    
+  }
+
+  .btn.btn--tab{
+    font-size: 14px;
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+  }
 }
