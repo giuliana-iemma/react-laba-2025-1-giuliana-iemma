@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Victor Alvarado</title>
+  </head>
+  <body>
+    <div id="container">
+      <!-- <div class="theme-toggle"> -->
+      <!--   <label class="theme-toggle__label" for="theme-toggle"><span class="theme-toggle__label--hidden">Dark mode</span></label>
+            <input type="checkbox" id="theme-toggle" class="theme-toggle__input theme-toggle__input--hidden"> -->
+
+      <button id="theme-toggle">
+        <img
+          class="theme-toggle__image"
+          src="./assets/icons/dark-light-mode-icon.svg"
+          alt="Dark Mode"
+        /><span class="theme-toggle__text">Dark mode</span>
+      </button>
+      <!-- </div> -->
+
+      <header>
+        <div id="profile-info">
+          <div class="profile-image">
+            <img
+              class="profile-image__image"
+              src="./assets/images/victor-alvarado.jpeg"
+              alt="Image of Victor Alvarado"
+            />
+          </div>
+
+          <div class="info">
+            <h1 class="info__headline">Victor Alvarado</h1>
+            <p class="info__subheadline">Software Engineer</p>
+
+            <div class="social-media">
+              <a class="social-media__link" href="#"
+                ><img
+                  class="social-media__link__image"
+                  src="./assets/icons/github.svg"
+                  alt="Github"
+              /></a>
+              <a class="social-media__link" href="#"
+                ><img
+                  class="social-media__link__image"
+                  src="./assets/icons/twitter.svg"
+                  alt="Twitter"
+              /></a>
+              <a class="social-media__link" href="#"
+                ><img
+                  class="social-media__link__image"
+                  src="./assets/icons/linkedin.svg"
+                  alt="LinkedIn"
+              /></a>
+              <a class="social-media__link" href="#"
+                ><img
+                  class="social-media__link__image"
+                  src="./assets/icons/youtube.svg"
+                  alt="Youtube"
+              /></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-facts">
+          <p class="profile-facts__paragraph">
+            <span class="profile-facts__paragraph__number">7</span> years of work experience
+          </p>
+          <p class="profile-facts__paragraph">
+            <span class="profile-facts__paragraph__number">50+</span> Completed projects
+          </p>
+          <p class="profile-facts__paragraph">
+            <span class="profile-facts__paragraph__number">20+</span> Satisfied customers
+          </p>
+        </div>
+
+        <div class="contact">
+          <a class="btn btn--highlight" href="">
+            Download CV
+            <img class="btn__image" src="./assets/icons/download.png" alt="Download" />
+          </a>
+          <!-- Doubt: is it better to place the image here or as a background-image? -->
+          <a class="btn" href="">Contact me</a>
+        </div>
+      </header>
+
+      <main>
+        <nav class="tabs-container">
+          <a class="btn btn--tab active">Portfolio</a>
+          <a class="btn btn--tab">Skills</a>
+        </nav>
+
+        <div id="portfolio">
+          <!-- <h2 class="headline headline--hidden">Portfolio</h2> -->
+
+          <a class="portfolio__link" href="#"
+            ><img class="portfolio__link__image" src="./assets/images/1.png" alt="Project 1"
+          /></a>
+
+          <a class="portfolio__link" href="#"
+            ><img class="portfolio__link__image" src="./assets/images/2.png" alt="Project 2"
+          /></a>
+
+          <a class="portfolio__link" href="#"
+            ><img class="portfolio__link__image" src="./assets/images/3.jpeg" alt="Project 3"
+          /></a>
+
+          <a class="portfolio__link" href="#"
+            ><img class="portfolio__link__image" src="./assets/images/4.jpeg" alt="Project 4"
+          /></a>
+
+          <a class="portfolio__link" href="#"
+            ><img class="portfolio__link__image" src="./assets/images/5.png" alt="Project 5"
+          /></a>
+
+          <a class="portfolio__link" href="#"
+            ><img class="portfolio__link__image" src="./assets/images/6.png" alt="Project 6"
+          /></a>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <p class="footer__copyright">© Victor Alvarado. 2022 All rigths reserved</p>
+    </footer>
+
+    <script src="./scripts/scripts.js"></script>
+  </body>
+</html>
