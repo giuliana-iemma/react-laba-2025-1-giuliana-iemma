@@ -20,11 +20,11 @@
   --content-color-dm-dark: #a3abb2;
   --content-color-dm-light: #f1f2f4;
   --highlight-color-dm: #ffe071;
-  --highlight-color-dm-transparent: #FFE071E0;
+  --highlight-color-dm-transparent: #ffe071e0;
 }
 
 .body {
-  background-color: var(--background-lm); 
+  background-color: var(--background-lm);
 }
 
 .btn {
@@ -45,10 +45,10 @@
   /* border: 1px solid #3E64AA; */ /* Doubt: This is in the Figma file but it's not really seen. Should we add it or not? */
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
-.btn:hover{
+.btn:hover {
   filter: brightness(98%);
 }
 
@@ -57,14 +57,14 @@
   border: none;
 }
 
-.btn--rounded-small{
+.btn--rounded-small {
   width: 38px;
   height: 38px;
   background-color: white;
   border-radius: 100%;
 }
 
-.headline.headline--hidden{
+.headline.headline--hidden {
   display: none;
 }
 
@@ -166,8 +166,10 @@
 }
 
 .social-media__icon {
-  width: 90%; /* Doubt */
+  width: 100%; /* Doubt */
   object-fit: contain;
+  width: 30px;
+  height: 30px;
 }
 
 .profile__facts {
@@ -204,7 +206,7 @@
   max-width: 618px;
 }
 
-.container-main{
+.container-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -250,7 +252,7 @@
   margin-top: 76px;
 }
 
-.project{
+.project {
   position: relative;
   height: 226px;
   max-width: 362px;
@@ -259,16 +261,16 @@
   overflow: hidden;
 }
 
-.project__overlay{
+.project__overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--highlight-color-lm-transparent);
-  opacity: 0; 
+  color: var(--content-color-lm-dark);
+  background-color: var(--highlight-color-dm-transparent);  opacity: 0;
   z-index: 1;
-  transition: opacity 0.3s ease; 
+  transition: opacity 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -278,19 +280,20 @@
   padding-inline: 40px;
 }
 
-.project__title{
+.project__title {
   font-size: 22px;
   font-weight: 500;
+  line-height: 33px;
 }
 
-.project__description{
+.project__description {
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 18px;
 }
 
 .project:hover .project__overlay {
-  opacity: 1; 
+  opacity: 1;
   z-index: 1;
 }
 
@@ -309,10 +312,9 @@
   height: 100%;
   filter: brightness(80%);
   object-fit: cover;
-  
 }
 
-.project__image.project__image--byn{
+.project__image.project__image--byn {
   filter: grayscale(100%);
 }
 
@@ -346,20 +348,18 @@
   display: inline-block;
 }
 
-
 #container.dark-mode {
   color: var(--content-color-dm-dark);
 }
 
 #container.dark-mode .profile__contact .btn {
-background-color: var(--background-dm-light);
-color: var(--content-color-dm-dark);
+  background-color: var(--background-dm-light);
+  color: var(--content-color-dm-dark);
 }
 
 #container.dark-mode .profile__contact .btn.btn--highlight {
   background-color: var(--highlight-color-dm);
   color: var(--content-color-lm-dark);
-
 }
 
 #container.dark-mode .profile__image-container {
@@ -390,7 +390,6 @@ color: var(--content-color-dm-dark);
   background-color: var(--background-dm-light);
 }
 
-
 #container.dark-mode .btn--tab {
   background-color: transparent;
   color: var(--content-color-dm-dark);
@@ -399,11 +398,6 @@ color: var(--content-color-dm-dark);
 #container.dark-mode .btn--tab-active {
   background-color: var(--background-dm-dark);
   color: var(--content-color-dm-dark);
-}
-
-#container.dark-mode .project__overlay{
-  color: var(--content-color-lm);
-  background-color: var();
 }
 
 #container.dark-mode .footer__copyright {
