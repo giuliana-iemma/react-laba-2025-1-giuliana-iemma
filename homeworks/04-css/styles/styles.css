@@ -25,6 +25,7 @@
 
 .body {
   background-color: var(--background-lm);
+  transition: all ease .5s;
 }
 
 .btn {
@@ -45,7 +46,7 @@
   /* border: 1px solid #3E64AA; */ /* Doubt: This is in the Figma file but it's not really seen. Should we add it or not? */
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: filter 0.3s ease;
 }
 
 .btn:hover {
