@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./styles/styles.css" />
     <title>Victor Alvarado</title>
   </head>
-  <body>
+  <body class="body">
     <div id="container">
       <button id="theme-toggle">
         <img
@@ -28,7 +28,7 @@
           <div class="profile__image-container">
             <img
               class="profile__image-picture"
-              src="./assets/images/victor-alvarado.jpeg"
+              src="./assets/images/victor-alvarado.jpg"
               alt="Image of Victor Alvarado"
             />
           </div>
@@ -99,39 +99,121 @@
         </div>
       </header>
 
-      <main>
+      <main class="container-main">
         <nav class="tabs-container">
-          <a class="btn btn--tab active">Portfolio</a>
+          <a class="btn btn--tab-active">Portfolio</a>
           <a class="btn btn--tab">Skills</a>
         </nav>
 
-        <div id="portfolio">
-          <!-- <h2 class="headline headline--hidden">Portfolio</h2> -->
+        <section id="portfolio">
+          <h2 class="headline headline--hidden">Portfolio</h2>
 
-          <a class="portfolio__link" href="#"
-            ><img class="portfolio__link-image" src="./assets/images/1.png" alt="Project 1"
-          /></a>
+          <article class="project">
+            <div class="project__overlay">
+              <h3 class="project__title">SmarterTrading411</h3>
+              <p class="project__description">
+                Landing page of SmarterTrading411 created using wordPress
+              </p>
+              <button class="btn btn--rounded-small">
+                <img src="./assets/icons/link.svg" alt="Link to project" />
+              </button>
+            </div>
 
-          <a class="portfolio__link" href="#"
-            ><img class=".portfolio__link-image" src="./assets/images/2.png" alt="Project 2"
-          /></a>
+            <a class="project__link" href="#"
+              ><img
+                class="project__image project__image--byn"
+                src="./assets/images/1.png"
+                alt="Project 1 - SmarterTrading411"
+            /></a>
+          </article>
 
-          <a class="portfolio__link" href="#"
-            ><img class="portfolio__link-image" src="./assets/images/3.jpeg" alt="Project 3"
-          /></a>
+          <article class="project">
+            <div class="project__overlay">
+              <h3 class="project__title">SPFair Value</h3>
+              <p class="project__description">Landing page of SPFair Value. Coded.</p>
+              <button class="btn btn--rounded-small">
+                <img src="./assets/icons/link.svg" alt="Link to project" />
+              </button>
+            </div>
 
-          <a class="portfolio__link" href="#"
-            ><img class="portfolio__link-image" src="./assets/images/4.jpeg" alt="Project 4"
-          /></a>
+            <a class="project__link" href="#"
+              ><img
+                class="project__image project__image--byn"
+                src="./assets/images/2.jpg"
+                alt="Project 2 - SPFair Value"
+            /></a>
+          </article>
 
-          <a class="portfolio__link" href="#"
-            ><img class="portfolio__link-image" src="./assets/images/5.png" alt="Project 5"
-          /></a>
+          <article class="project">
+            <div class="project__overlay">
+              <h3 class="project__title">E-Commerce - Lucas Sanchez</h3>
+              <p class="project__description">E-Commerce for Lucas Sanchez, a Graphic Designer.</p>
+              <button class="btn btn--rounded-small">
+                <img src="./assets/icons/link.svg" alt="Link to project" />
+              </button>
+            </div>
 
-          <a class="portfolio__link" href="#"
-            ><img class="portfolio__link-image" src="./assets/images/6.png" alt="Project 6"
-          /></a>
-        </div>
+            <a class="project__link" href="#"
+              ><img
+                class="project__image project__image--byn"
+                src="./assets/images/3.jpeg"
+                alt="Project 3 - E-Commerce for Graphic Designer"
+            /></a>
+          </article>
+
+          <article class="project">
+            <div class="project__overlay">
+              <h3 class="project__title">The Wheel Kitchen</h3>
+              <p class="project__description">
+                Landing page for The Wheel Kitchen, created using Wordpress.
+              </p>
+              <button class="btn btn--rounded-small">
+                <img src="./assets/icons/link.svg" alt="Link to project" />
+              </button>
+            </div>
+
+            <a class="project__link" href="#"
+              ><img
+                class="project__image project__image--byn"
+                src="./assets/images/4.jpeg"
+                alt="Project 4 - The Wheel Kitchen"
+            /></a>
+          </article>
+
+          <article class="project">
+            <div class="project__overlay">
+              <h3 class="project__title">Simply Paper</h3>
+              <p class="project__description">Landing page Simply Paper created using wordPress</p>
+              <button class="btn btn--rounded-small">
+                <img src="./assets/icons/link.svg" alt="Link to project" />
+              </button>
+            </div>
+
+            <a class="project__link" href="#"
+              ><img
+                class="project__image project__image--byn"
+                src="./assets/images/5.png"
+                alt="Project 5 - Simply Paper"
+            /></a>
+          </article>
+
+          <article class="project">
+            <div class="project__overlay">
+              <h3 class="project__title">Issima</h3>
+              <p class="project__description">Landing page Issima created using wordPress</p>
+              <button class="btn btn--rounded-small">
+                <img src="./assets/icons/link.svg" alt="Link to project" />
+              </button>
+            </div>
+
+            <a class="project__link" href="#"
+              ><img
+                class="project__image project__image--byn"
+                src="./assets/images/6.jpg"
+                alt="Project 6 - Issima"
+            /></a>
+          </article>
+        </section>
       </main>
     </div>
 
