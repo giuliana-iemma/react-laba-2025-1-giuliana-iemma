@@ -268,7 +268,8 @@
   width: 100%;
   height: 100%;
   color: var(--content-color-lm-dark);
-  background-color: var(--highlight-color-dm-transparent);  opacity: 0;
+  background-color: var(--highlight-color-dm-transparent);
+  opacity: 0;
   z-index: 1;
   transition: opacity 0.3s ease;
   cursor: pointer;
