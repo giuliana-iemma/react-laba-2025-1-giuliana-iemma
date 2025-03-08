@@ -8,22 +8,22 @@
   </head>
   <body class="body">
     <div id="container">
-      <button id="theme-toggle">
-        <img
-          class="theme-toggle__image theme-toggle__image--dm"
-          src="./assets/icons/dark-light-mode-icon.svg"
-          alt="Dark Mode"
-        />
-
-        <img
-          class="theme-toggle__image theme-toggle__image--lm"
-          src="./assets/icons/dark-light-mode-icon-dm.svg"
-          alt="Light Mode"
-        />
-        <span class="theme-toggle__text">Dark mode</span>
-      </button>
-
       <header class="header">
+        <button id="theme-toggle">
+          <img
+            class="theme-toggle__image theme-toggle__image--dm"
+            src="./assets/icons/dark-light-mode-icon.svg"
+            alt="Dark Mode"
+          />
+
+          <img
+            class="theme-toggle__image theme-toggle__image--lm"
+            src="./assets/icons/dark-light-mode-icon-dm.svg"
+            alt="Light Mode"
+          />
+          <span class="theme-toggle__text">Dark mode</span>
+        </button>
+
         <div class="profile">
           <div class="profile__image-container">
             <img
@@ -96,7 +96,7 @@
         <div class="profile__contact">
           <a class="btn btn--highlight" href="#">
             Download CV
-            <img class="btn__image" src="./assets/icons/download.png" alt="Download" />
+            <img class="btn__image" src="./assets/icons/download.svg" alt="Download" />
           </a>
           <!-- Doubt: is it better to place the image here or as a background-image? -->
           <a class="btn" href="">Contact me</a>
@@ -105,8 +105,8 @@
 
       <main class="container-main">
         <nav class="tabs-container">
-          <a class="btn btn--tab-active">Portfolio</a>
-          <a class="btn btn--tab">Skills</a>
+          <a class="tabs-container__btn btn tabs-container__btn-active">Portfolio</a>
+          <a class="tabs-container__btn btn btn--tab">Skills</a>
         </nav>
 
         <section id="portfolio">
