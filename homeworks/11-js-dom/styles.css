@@ -1,0 +1,49 @@
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box; 
+
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    margin: 0 auto;
+    width: fit-content;
+
+}
+
+.grid__cell{
+    aspect-ratio: 1/1;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: aliceblue;
+    border: 1px solid gainsboro; 
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: cornflowerblue;
+    border-radius: .2rem;
+}
+
+.grid__cell--selected{
+    border: 2px solid cornflowerblue;
+}
+
+.grid__background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: .2rem;
+
+}
+
+.grid__background--highlighted{
+    background-color: rgb(152, 181, 230);
+
+}
