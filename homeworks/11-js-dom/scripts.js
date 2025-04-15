@@ -13,12 +13,16 @@ for (let row = 1; row <= 30; row++) {
     background.dataset.column = column;
 
     //Add onclick event
-    cell.addEventListener('click', () => {
-      let selectedCell = document.querySelector('.grid__cell--selected');
+    cell.addEventListener('click', (event) => {
+      //   let selectedCell = document.querySelector('.grid__cell--selected');
 
-      if (selectedCell) {
-        selectedCell.classList.remove('grid__cell--selected');
-        selectedCell.innerHTML = '';
+      let selectedCells = document.querySelectorAll('.grid__cell--selected');
+
+      if (!event.shiftKey && selectedCells) {
+        selectedCells.forEach((item) => {
+          item.classList.remove('grid__cell--selected');
+          item.innerHTML = '';
+        });
       }
 
       let selectedCellRow = background.getAttribute('data-row');
@@ -31,7 +35,7 @@ for (let row = 1; row <= 30; row++) {
       console.log(backgrounds);
 
       backgrounds.forEach((item) => {
-        if (selectedCell) {
+        if (!event.shiftKey && selectedCells) {
           item.classList.remove('grid__background--highlighted');
         }
 
