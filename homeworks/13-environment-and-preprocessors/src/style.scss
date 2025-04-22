@@ -109,8 +109,9 @@ $highlight-color-dm-transparent: #ffe071e0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
 
-  #theme-toggle {
+#theme-toggle {
     background-color: $background-lm-light;
     border: none;
     width: 80px;
@@ -130,7 +131,6 @@ $highlight-color-dm-transparent: #ffe071e0;
       display: none;
     }
   }
-}
 
 //Question : hould I nest every child into its parent?
 .profile {
@@ -199,8 +199,9 @@ $highlight-color-dm-transparent: #ffe071e0;
       }
     }
   }
+}
 
-  .profile__facts {
+.profile__facts {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -238,8 +239,6 @@ $highlight-color-dm-transparent: #ffe071e0;
     width: 95%;
     max-width: 618px;
   }
-}
-
 .container-main {
   display: flex;
   flex-direction: column;
@@ -390,14 +389,14 @@ $highlight-color-dm-transparent: #ffe071e0;
 
   #theme-toggle {
     background-color: $background-dm-light;
-  }
 
-  .theme-toggle__image--dm {
-    display: none;
-  }
-
-  .theme-toggle__image--lm {
-    display: inline-block;
+    .theme-toggle__image--dm {
+        display: none;
+      }
+    
+      .theme-toggle__image--lm {
+        display: inline-block;
+      }
   }
 
   .footer {
@@ -410,7 +409,8 @@ $highlight-color-dm-transparent: #ffe071e0;
 #container.dark-mode {
   color: $content-color-dm-dark;
 
-  .profile__contact .btn {
+  .profile{
+.profile__contact .btn {
     background-color: $background-dm-light;
     color: $content-color-dm-dark;
   }
@@ -429,6 +429,8 @@ $highlight-color-dm-transparent: #ffe071e0;
     color: $content-color-dm-light;
   }
 
+  }
+  
   .social-media.social-media--dm {
     display: flex;
   }
@@ -460,8 +462,7 @@ $highlight-color-dm-transparent: #ffe071e0;
   }
 }
 
-
-  @media  (max-width: 600px) {
+@media (max-width: 600px) {
   body {
     font-size: 16px;
   }
@@ -508,46 +509,46 @@ $highlight-color-dm-transparent: #ffe071e0;
     gap: 40px;
 
     .profile__image-container {
-        max-width: 124px;
-        max-height: 124px;
-        padding: calc(124px - 107px);
-      }
-    
-      .profile__image-picture {
-        max-width: 107px;
-        max-height: 107px;
+      max-width: 124px;
+      max-height: 124px;
+      padding: calc(124px - 107px);
+    }
+
+    .profile__image-picture {
+      max-width: 107px;
+      max-height: 107px;
+    }
+
+    .profile__info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .profile__headline {
+        font-size: 32px;
+        line-height: 48px;
       }
 
-      .profile__info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        .profile__headline {
-            font-size: 32px;
-            line-height: 48px;
-          }
-
-          .profile__subheadline {
-            font-size: 14px;
-            line-height: 21px;
-            margin: 0;
-          }
+      .profile__subheadline {
+        font-size: 14px;
+        line-height: 21px;
+        margin: 0;
       }
+    }
   }
-  
+
   .social-media {
     margin-top: 20px;
 
     .social-media__link {
-        max-width: 24px;
-        max-height: 24px;
-      }
-    
-      .social-media__icon {
-        max-width: 20px;
-      }
+      max-width: 24px;
+      max-height: 24px;
+    }
+
+    .social-media__icon {
+      max-width: 20px;
+    }
   }
 
   .profile__facts {
@@ -557,13 +558,13 @@ $highlight-color-dm-transparent: #ffe071e0;
     padding-block: 20px;
 
     .profile__facts-paragraph {
-        font-size: 14px;
-        max-width: 103px;
-      }
+      font-size: 14px;
+      max-width: 103px;
+    }
 
-      .profile__facts-number {
-        font-size: 16px;
-      }
+    .profile__facts-number {
+      font-size: 16px;
+    }
   }
 
   .profile__contact {
@@ -583,12 +584,12 @@ $highlight-color-dm-transparent: #ffe071e0;
     border-radius: 10px;
 
     .btn__image {
-        width: 1em;
-      }
+      width: 1em;
+    }
 
-      &.btn--tab {
-        font-size: 14px;
-      }
+    &.btn--tab {
+      font-size: 14px;
+    }
   }
 
   .tabs-container {
@@ -619,11 +620,11 @@ $highlight-color-dm-transparent: #ffe071e0;
     margin-top: 30px;
 
     .footer__copyright {
-        font-size: 14px;
-        text-align: center;
-        width: 100%;
-        margin: 0px;
-      }
+      font-size: 14px;
+      text-align: center;
+      width: 100%;
+      margin: 0px;
+    }
   }
 
   .btn--mobile-only {
@@ -647,8 +648,8 @@ $highlight-color-dm-transparent: #ffe071e0;
     transition: background-color 0.2s ease;
 
     &:active {
-        background-color: $highlight-color-dm;
-      }
+      background-color: $highlight-color-dm;
+    }
   }
 }
 
@@ -657,8 +658,8 @@ $highlight-color-dm-transparent: #ffe071e0;
     width: 95%;
 
     .profile__headline {
-        font-size: 36px;
-      }
+      font-size: 36px;
+    }
   }
 
   #portfolio {
