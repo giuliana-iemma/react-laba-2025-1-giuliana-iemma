@@ -10,9 +10,6 @@ const Light = ({ color, state = 'off' }) => {
   );
 };
 
-const Head = () => {
-  return <div className="traffic__head"></div>;
-};
 
 const YellowLight = () => {
   return (
@@ -22,7 +19,7 @@ const YellowLight = () => {
             <Light color="yellow" state="on" />
             <Light color="green" state="off" />
         </div>
-        <Head/>
+        <div className="traffic__head"></div>;
     </div>
   );
 };
@@ -35,7 +32,7 @@ const GreenLight = () => {
             <Light color="yellow" state="off" />
             <Light color="green" state="on" />
         </div>
-        <Head/>
+        <div className="traffic__head"></div>;
     </div>
   );
 };
@@ -48,12 +45,12 @@ const RedLight = () => {
         <Light color="yellow" state="off" />
         <Light color="green" state="off" />
         </div>
-        <Head/>
+        <div className="traffic__head"></div>;
     </div>
   );
 };
 
-//Loop 
+//Prepare states and function 
 let lightStates = [GreenLight, RedLight, YellowLight];
 let index = 0;
 
@@ -67,6 +64,6 @@ const renderLight = function () {
 //Find root in DOM
 const root = document.getElementById('root');
 
+//Render Light into container
 setInterval(renderLight, 1000)
 
-//Render Light into container
