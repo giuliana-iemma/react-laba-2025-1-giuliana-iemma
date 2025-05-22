@@ -1,50 +1,72 @@
-const Light = ({color, state = 'off'}) => {
-    return <div className={state === 'on' ? `traffic__light traffic__light--${color}` : `traffic__light traffic__light--off`}></div>
-}
-
-const YellowLight = () => {
-    return <div className="traffic">
-        <Light color='red' state='off'/>
-        <Light color='yellow' state='on'/>
-        <Light color='green' state='off'/>
-    </div>;
-}
-
-const GreenLight = () => {
-    return <div className="traffic">
-        <Light color='red' state='off'/>
-        <Light color='yellow' state='off'/>
-        <Light color='green' state='on'/>
-    </div>;
-}
-
-const RedLight = () => {
-    return <div className="traffic">
-        <Light color='red' state='on'/>
-        <Light color='yellow' state='off'/>
-        <Light color='green' state='off'/>
-    </div>;
-}
+const Light = ({ color, state = 'off' }) => {
+  return (
+    <div
+      className={
+        state === 'on'
+          ? `traffic__light traffic__light--${color}`
+          : `traffic__light traffic__light--off`
+      }
+    ></div>
+  );
+};
 
 const Head = () => {
-    return <div className="traffic__head"></div>
-}
+  return <div className="traffic__head"></div>;
+};
 
-const TrafficLight = () => {
-    //Function to loop set interval
-    return <div className="traffic">
-        <GreenLight/>
-    </div>;
-}
-
-const Container = () => {
-    return <div className="container">
-        <TrafficLight/>
+const YellowLight = () => {
+  return (
+    <div className="container">
+        <div className="traffic">
+            <Light color="red" state="off" />
+            <Light color="yellow" state="on" />
+            <Light color="green" state="off" />
+        </div>
         <Head/>
-    </div>;
+    </div>
+  );
+};
+
+const GreenLight = () => {
+  return (
+    <div className="container">
+        <div className="traffic">
+            <Light color="red" state="off" />
+            <Light color="yellow" state="off" />
+            <Light color="green" state="on" />
+        </div>
+        <Head/>
+    </div>
+  );
+};
+
+const RedLight = () => {
+  return (
+    <div className="container">
+        <div className="traffic">
+        <Light color="red" state="on" />
+        <Light color="yellow" state="off" />
+        <Light color="green" state="off" />
+        </div>
+        <Head/>
+    </div>
+  );
+};
+
+//Loop 
+let lightStates = [GreenLight, RedLight, YellowLight];
+let index = 0;
+
+const renderLight = function () {
+    const CurrentState = lightStates[index];
+    ReactDOM.render(<CurrentState />, root);
+
+    index = (index + 1) % lightStates.length;
 }
 
-const root = document.getElementById("root");
+//Find root in DOM
+const root = document.getElementById('root');
 
-//Render Red Light into container
-ReactDOM.render(<Container />, root)
+setInterval(renderLight, 1000)
+
+//Render Light into container
