@@ -1,0 +1,25 @@
+{
+  "name": "18-react-basics",
+  "version": "1.0.0",
+  "main": "index.jsx",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server",
+    "build": "babel index.jsx --out-file compiled.js --presets=@babel/preset-react"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Simple React traffic light using Babel",
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "live-server": "^1.2.2"
+  }
+}

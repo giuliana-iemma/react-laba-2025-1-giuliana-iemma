@@ -112,25 +112,25 @@ $highlight-color-dm-transparent: #ffe071e0;
 }
 
 #theme-toggle {
-    background-color: $background-lm-light;
-    border: none;
-    width: 80px;
-    height: 80px;
-    border-radius: 100%;
-    cursor: pointer;
-    margin-bottom: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: $background-lm-light;
+  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  cursor: pointer;
+  margin-bottom: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .theme-toggle__text {
-      display: none;
-    }
-
-    .theme-toggle__image--lm {
-      display: none;
-    }
+  .theme-toggle__text {
+    display: none;
   }
+
+  .theme-toggle__image--lm {
+    display: none;
+  }
+}
 
 //Question : hould I nest every child into its parent?
 .profile {
@@ -202,43 +202,43 @@ $highlight-color-dm-transparent: #ffe071e0;
 }
 
 .profile__facts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 634px;
+  gap: 90px;
+  padding-block: 20px;
+  padding-inline: 31px;
+  margin-top: 48px;
+
+  .profile__facts-paragraph {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 634px;
-    gap: 90px;
-    padding-block: 20px;
-    padding-inline: 31px;
-    margin-top: 48px;
+    text-align: center;
+    width: fit-content;
+    transition: transform 0.3s ease;
 
-    .profile__facts-paragraph {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      width: fit-content;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        animation: bounce 0.8s ease-in-out;
-      }
-    }
-
-    .profile__facts-number {
-      color: #3a3a3a;
-      font-size: 24px;
+    &:hover {
+      animation: bounce 0.8s ease-in-out;
     }
   }
 
-  .profile__contact {
-    display: flex;
-    justify-content: center;
-    margin-top: 47px;
-    gap: 38px;
-    width: 95%;
-    max-width: 618px;
+  .profile__facts-number {
+    color: #3a3a3a;
+    font-size: 24px;
   }
+}
+
+.profile__contact {
+  display: flex;
+  justify-content: center;
+  margin-top: 47px;
+  gap: 38px;
+  width: 95%;
+  max-width: 618px;
+}
 .container-main {
   display: flex;
   flex-direction: column;
@@ -391,12 +391,12 @@ $highlight-color-dm-transparent: #ffe071e0;
     background-color: $background-dm-light;
 
     .theme-toggle__image--dm {
-        display: none;
-      }
-    
-      .theme-toggle__image--lm {
-        display: inline-block;
-      }
+      display: none;
+    }
+
+    .theme-toggle__image--lm {
+      display: inline-block;
+    }
   }
 
   .footer {
@@ -409,28 +409,27 @@ $highlight-color-dm-transparent: #ffe071e0;
 #container.dark-mode {
   color: $content-color-dm-dark;
 
-  .profile{
-.profile__contact .btn {
-    background-color: $background-dm-light;
-    color: $content-color-dm-dark;
+  .profile {
+    .profile__contact .btn {
+      background-color: $background-dm-light;
+      color: $content-color-dm-dark;
+    }
+
+    .profile__contact .btn.btn--highlight {
+      background-color: $highlight-color-dm;
+      color: $content-color-lm-dark;
+    }
+
+    .profile__image-container {
+      border: $highlight-color-dm 4px solid;
+      background-color: $background-dm-dark;
+    }
+
+    .profile__info .profile__headline {
+      color: $content-color-dm-light;
+    }
   }
 
-  .profile__contact .btn.btn--highlight {
-    background-color: $highlight-color-dm;
-    color: $content-color-lm-dark;
-  }
-
-  .profile__image-container {
-    border: $highlight-color-dm 4px solid;
-    background-color: $background-dm-dark;
-  }
-
-  .profile__info .profile__headline {
-    color: $content-color-dm-light;
-  }
-
-  }
-  
   .social-media.social-media--dm {
     display: flex;
   }
