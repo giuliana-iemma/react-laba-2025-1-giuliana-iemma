@@ -19,7 +19,7 @@ const YellowLight = () => {
             <Light color="yellow" state="on" />
             <Light color="green" state="off" />
         </div>
-        <div className="traffic__head"></div>;
+        <div className="traffic__head"></div>
     </div>
   );
 };
