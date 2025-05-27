@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const RefreshAllButton = ({refreshAll}) => {
+const RefreshAllButton = ({ onClick }) => {
   return (
-    <button className='button-refresh' onClick={refreshAll}>
-        Refresh All
+    <button className="button-refresh" onClick={onClick}>
+      Refresh All
     </button>
-  )
-}
+  );
+};
 
-export default RefreshAllButton
+export default RefreshAllButton;
