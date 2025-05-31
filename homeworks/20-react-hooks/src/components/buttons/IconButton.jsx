@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const IconButton = ({icon, action, label, ...otherProps}) => {
+const IconButton = ({ icon, label, ...otherProps }) => {
   return (
-    <button onClick={action} {...otherProps}>
-      <img className='button__icon' src={`./src/assets/icons/${icon}`} alt={label} />
+    <button {...otherProps}>
+      <img className="button__icon" src={`./src/assets/icons/${icon}`} alt={label} />
     </button>
-  )
-}
+  );
+};
 
-export default IconButton
+export default IconButton;

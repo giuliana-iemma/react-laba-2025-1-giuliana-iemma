@@ -1,105 +1,159 @@
 import { useEffect, useState } from 'react';
-import AddTask from './components/AddTask'
+import AddTask from './components/AddTask';
 import Task from './components/Task';
 
 function App() {
-  //Save when the to-do list is updated
-   /*  useEffect(()=> {
-      const savedTasks = localStorage.getItem('tasks');
-        
-      console.log('Loading:', savedTasks); 
+   //READ
+  function getSavedTasks () {
+      try{
+        const savedTasks = localStorage.getItem('tasks');
+        // console.log(savedTasks);
 
-      if(savedTasks){
-        setTasks(JSON.parse(savedTasks));
+        return JSON.parse(savedTasks);
+
+      } catch (error) {
+        console.error("Couldn't find any tasks: ", error);
+        return [];
       }
-    }, []); //Executed at mounting */
-
-  const [tasks, setTasks] = useState([])
-
-
-  const [title, setTitle] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
-    //Add new task
-    function createTask (title){
-        //Remove blank spaces in the start or end of the title
-        const trimmedTitle = title.trim();
-
-        const taskExists = tasks.some(task => task.title === trimmedTitle);
-
-        const isValid =  /^[a-zA-Z0-9\s]+$/.test(trimmedTitle);
-
-        if (trimmedTitle.length === 0) {
-          setErrorMessage("Please, write something before pressing Add button");
-          console.error("Please, write something before pressing the button")
-        } else if (taskExists){
-          //Validation: Handle duplicate to-do item
-          setErrorMessage("This task is already in the list.");
-          console.error("This task is already in the list.")
-        } else if (title.length > 20 ){
-          //Validation: Exceeding Maximum To-do length
-          setErrorMessage("This task is too long. Maximum of 20 characters");          
-          console.error("This task is too long. Maximum of 20 characters")
-        } else if (!isValid){
-          //Validation: Invalid characters
-          setErrorMessage("You can only use letters or numbers");      
-          console.error("You can only use letters or numbers")    
-        } else {
-           setTasks(
-            [
-              ...tasks,
-              {key: Date.now(),
-              title: trimmedTitle
-              }
-            ]
-          );
-
-          //Clear the states
-          setErrorMessage("");
-          setTitle("");
-        }
     }
 
-  const [editingKey, setEditingKey] = useState('');
-  const [newTitle, setNewTitle] = useState('');
+    const [tasks, setTasks] = useState(getSavedTasks());
+ 
+    //Get tasks when mounted
+    useEffect(()=> {
+    getSavedTasks()
+    }, []); //Executed at mounting
 
-    function makeEditable (){
-      console.log("making editable")
-    }
-    
-    function updateTask (){
-
-    }
-
-    function deleteTask (){
-
-    }
-
-    
-
-    useEffect(() => {
+    //Save tasks when the to-do list is updated
+    function saveTasks () {
       localStorage.setItem('tasks', JSON.stringify(tasks));
-    }, [tasks]);
+    }
 
-  return ( 
+    useEffect(()=> {
+      saveTasks();
+    }, [tasks]); //Executed when tasks are updated
+        
+  //CREATE
+  const [title, setTitle] = useState('');
+  const [addErrorMessage, setAddErrorMessage] = useState('');
+
+  //Add new task
+  function createTask(title) {
+    //Remove blank spaces in the start or end of the title
+    const trimmedTitle = title.trim();
+
+    const taskExists = tasks.some((task) => task.title === trimmedTitle);
+
+    const isValid = /^[a-zA-Z0-9\s]+$/.test(trimmedTitle);
+
+    if (trimmedTitle.length === 0) {
+      setAddErrorMessage('Please, write something before pressing Add button');
+      console.error('Please, write something before pressing the button');
+    } else if (taskExists) {
+      //Validation: Handle duplicate to-do item
+      setAddErrorMessage('This task is already in the list.');
+      console.error('This task is already in the list.');
+    } else if (title.length > 20) {
+      //Validation: Exceeding Maximum To-do length
+      setAddErrorMessage('This task is too long. Maximum of 20 characters');
+      console.error('This task is too long. Maximum of 20 characters');
+    } else if (!isValid) {
+      //Validation: Invalid characters
+      setAddErrorMessage('You can only use letters or numbers');
+      console.error('You can only use letters or numbers');
+    } else {
+      setTasks([...tasks, { key: Date.now(), title: trimmedTitle, completed: false }]);
+
+      //Clear the states
+      setAddErrorMessage('');
+      setTitle('');
+    }  }
+
+  //UPDATE
+  const [editingKey, setEditingKey] = useState('');
+  // const [newTitle, setNewTitle] = useState('');
+  const [editErrorMessage, setEditErrorMessage] = useState('');
+
+  function makeEditable(key) {
+    console.log('making editable');
+    //Save which task is being edited
+    setEditingKey(key);
+  }
+
+  function updateTask(key, title) {
+    // const targetTask = tasks.find((task)=> task.key === key);
+    const trimmedTitle = title.trim();
+    const taskExists = tasks.some(
+      (task) => task.title === trimmedTitle && task.key !== key
+    );
+    const isValid = /^[a-zA-Z0-9\s]+$/.test(trimmedTitle);
+    const updatedTasks = tasks.map((task) =>
+    task.key === key ? {...task, title: trimmedTitle} : task)
+
+    if (trimmedTitle.length === 0) {
+      setEditErrorMessage('Please, write something before pressing Add button');
+      console.error('Please, write something before pressing the button');
+    } else if (taskExists) {
+      //Validation: Handle duplicate to-do item
+      setEditErrorMessage('This task is already in the list.');
+      console.error('This task is already in the list.');
+    } else if (title.length > 20) {
+      //Validation: Exceeding Maximum To-do length
+      setEditErrorMessage('This task is too long. Maximum of 20 characters');
+      console.error('This task is too long. Maximum of 20 characters');
+    } else if (!isValid) {
+      //Validation: Invalid characters
+      setEditErrorMessage('You can only use letters or numbers');
+      console.error('You can only use letters or numbers');
+    } else {
+      setTasks(updatedTasks);
+      setEditingKey('');
+      setEditErrorMessage('');
+    }
+  }
+
+  function deleteTask(key) {
+    const targetIndex = tasks.findIndex((task) => task.key === key);
+    console.log(targetIndex);
+
+    console.log(tasks)
+    const updatedTasks = tasks.filter(task => task.key !== key);
+    console.log(updatedTasks);
+    setTasks(updatedTasks);
+  }
+
+  function completeTask (key) {
+
+  }
+
+  return (
     <>
-      <div className='container'>
-        <AddTask 
-          onAdd={() => createTask(title)} 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
-          errorMessage={errorMessage}/>
+      <div className="container">
+        <AddTask
+          onAdd={() => createTask(title)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          errorMessage={addErrorMessage}
+        />
 
-        <section className='tasks'>
-          {tasks.length === 0 && <p className='tasks__message'>This to-do list is empty</p> }
+        <section className="tasks">
+          {tasks.length === 0 && <p className="tasks__message">This to-do list is empty</p>}
 
           {tasks.map((task) => (
-            <Task title={task.title} key={task.key} editFunction={() => makeEditable}/>
+            <Task 
+              title={task.title} 
+              key={task.key} 
+              editFunction={() => makeEditable(task.key, task.title)}
+              isEditing ={editingKey === task.key} //True if this is the task being edited
+              saveChanges={(updatedText) => updateTask(task.key, updatedText)}
+              errorMessage={editErrorMessage}
+              deleteFunction={() => deleteTask(task.key)}
+              completed = {task.completed}/>
           ))}
         </section>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
