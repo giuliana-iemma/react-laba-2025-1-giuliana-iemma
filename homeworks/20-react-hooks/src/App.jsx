@@ -62,12 +62,13 @@ function App() {
       setAddErrorMessage('You can only use letters or numbers');
       console.error('You can only use letters or numbers');
     } else {
-      setTasks([...tasks, { key: Date.now(), title: trimmedTitle, completed: false }]);
+      setTasks([...tasks, { key: Date.now(), title: trimmedTitle, isCompleted: false }]);
 
       //Clear the states
       setAddErrorMessage('');
       setTitle('');
-    }  }
+    }  
+  }
 
   //UPDATE
   const [editingKey, setEditingKey] = useState('');
@@ -114,7 +115,6 @@ function App() {
 
   function deleteTask(key) {
     const targetIndex = tasks.findIndex((task) => task.key === key);
-    console.log(targetIndex);
 
     console.log(tasks)
     const updatedTasks = tasks.filter(task => task.key !== key);
@@ -122,8 +122,12 @@ function App() {
     setTasks(updatedTasks);
   }
 
-  function completeTask (key) {
+  function toggleTaskComplete (key) {    
+    const updatedTasks = tasks.map((task) =>
+        task.key === key ? {...task, isCompleted: !task.isCompleted} : task);
 
+    console.log(updatedTasks);
+    setTasks(updatedTasks);
   }
 
   return (
@@ -148,7 +152,8 @@ function App() {
               saveChanges={(updatedText) => updateTask(task.key, updatedText)}
               errorMessage={editErrorMessage}
               deleteFunction={() => deleteTask(task.key)}
-              completed = {task.completed}/>
+              isCompleted = {task.isCompleted}
+              toggleCompleteFunction={() => toggleTaskComplete(task.key)}/>
           ))}
         </section>
       </div>

@@ -1,14 +1,15 @@
 import { useState} from 'react';
 import IconButton from './buttons/IconButton';
 
-const Task = ({ title, editFunction, deleteFunction, isEditing, saveChanges,  errorMessage, completed, ...otherProps }) => {
+const Task = ({ title, editFunction, deleteFunction, toggleCompleteFunction, isEditing, saveChanges,  errorMessage, isCompleted, ...otherProps }) => {
 
   const [text, setText] = useState(title);
 
   return (
-    <article className={completed ? ' task task--completed' : 'task'}>
-      <input className="task__checkbox" type="checkbox" />
-      
+    <article className={isCompleted ? ' task task--completed' : 'task'}>
+
+        <IconButton className="task__button task__button--check" icon={isCompleted === true ? `check-checked.png` : `check-unchecked.png`} onClick={toggleCompleteFunction}/>
+
       <div className="task__title-container">
         {!isEditing ? 
         (<p className="task__title">{title}</p>)

@@ -74,16 +74,16 @@ $hind-siliguri-font: 'Hind Siliguri', sans-serif;
     flex-direction: row;
     align-items: start;
 
-    .task__checkbox {
+    &.task--completed{
+      opacity: 50%;
+    }
+
+    .task__button--check {
       width: 65px;
       height: 65px;
       border: 1px solid $white;
-      background-color: $light;
+      background-color: transparent;
       margin-right: 1rem;
-
-      &:checked {
-        background-color: #5275a0;
-      }
     }
 
     .task__title {
