@@ -7,10 +7,7 @@ function App() {
   function getSavedTasks () {
       try{
         const savedTasks = localStorage.getItem('tasks');
-        // console.log(savedTasks);
-
         return JSON.parse(savedTasks);
-
       } catch (error) {
         console.error("Couldn't find any tasks: ", error);
         return [];
@@ -18,19 +15,14 @@ function App() {
     }
 
     const [tasks, setTasks] = useState(getSavedTasks());
- 
+
     //Get tasks when mounted
     useEffect(()=> {
     getSavedTasks()
     }, []); //Executed at mounting
 
-    //Save tasks when the to-do list is updated
-    function saveTasks () {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-
     useEffect(()=> {
-      saveTasks();
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }, [tasks]); //Executed when tasks are updated
         
   //CREATE
