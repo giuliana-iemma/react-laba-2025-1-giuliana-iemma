@@ -106,8 +106,6 @@ function App() {
   }
 
   function deleteTask(key) {
-    const targetIndex = tasks.findIndex((task) => task.key === key);
-
     console.log(tasks)
     const updatedTasks = tasks.filter(task => task.key !== key);
     console.log(updatedTasks);
@@ -133,9 +131,10 @@ function App() {
         />
 
         <section className="tasks">
-          {tasks.length === 0 && <p className="tasks__message">This to-do list is empty</p>}
+          {tasks && tasks.length === 0 && <p className="tasks__message">This to-do list is empty</p>}
+          {!tasks && <p className="tasks__message">This to-do list is empty</p>}
 
-          {tasks.map((task) => (
+          { tasks && tasks.map((task) => (
             <Task 
               title={task.title} 
               key={task.key} 
