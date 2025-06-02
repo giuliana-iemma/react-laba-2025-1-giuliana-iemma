@@ -7,7 +7,7 @@ function App() {
   function getSavedTasks () {
       try{
         const savedTasks = localStorage.getItem('tasks');
-        return JSON.parse(savedTasks);
+        return savedTasks ? JSON.parse(savedTasks) : [];
       } catch (error) {
         console.error("Couldn't find any tasks: ", error);
         return [];
