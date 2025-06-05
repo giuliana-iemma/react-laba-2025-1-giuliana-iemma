@@ -3,8 +3,13 @@ import AddTask from './components/AddTask';
 import Task from './components/Task';
 import { useTasksContext } from './context/TasksContext';
 import { useValidation } from './hooks/useValidation';
+import { useTasksStats } from './hooks/useTasksStats';
+import { useKeyPress } from './hooks/useKeyPress';
+
 
 function App() {
+  const {total, completed, remaining} = useTasksStats();
+
   //READ
   const { state: tasks, dispatch } = useTasksContext();
 
@@ -20,11 +25,13 @@ function App() {
   const [title, setTitle] = useState('');
   const [addErrorMessage, setAddErrorMessage] = useState('');
 
-  //Add new task
-  function createTask(title) {
-    const trimmedTitle = title.trim();
+ 
 
-    const { valid, message } = useValidation(trimmedTitle, tasks);
+  //Add new task
+  const createTask = useCallback((title) => {
+  const trimmedTitle = title.trim();
+
+  const { valid, message } = useValidation(trimmedTitle, tasks);
 
     if (!valid) {
       setAddErrorMessage(message);
@@ -43,7 +50,16 @@ function App() {
     //Clear the states
     setAddErrorMessage('');
     setTitle('');
-  }
+  }, [tasks, dispatch,]);
+
+  //Add when pressing  enter
+  const isEnterPressed = useKeyPress('Enter');
+
+  useEffect(() => {
+    if (isEnterPressed) {
+      createTask(title);
+    }
+  }, [isEnterPressed,  title, createTask]); 
 
   //UPDATE
   const [editingKey, setEditingKey] = useState('');
@@ -101,6 +117,14 @@ function App() {
         />
 
         <section className="tasks">
+          <div className='stats'> 
+            
+            {completed == total ? (
+              <p>All tasks completed. You can clear the list.</p>
+            ): (
+              <p>{completed} out of {total} tasks completed</p>
+            )}
+          </div>
           {tasks.length === 0 && <p className="tasks__message">This to-do list is empty</p>}
 
           {tasks &&

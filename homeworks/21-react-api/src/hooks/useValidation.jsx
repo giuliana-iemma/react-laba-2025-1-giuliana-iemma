@@ -1,4 +1,4 @@
-export function useValidation(title, tasks, currentKey = null) {
+export function useValidation(title, tasks) {
   const trimmedTitle = title.trim();
 
   if (trimmedTitle.length === 0) {
