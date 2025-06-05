@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import AddTask from './components/AddTask';
 import Task from './components/Task';
 import { useTasksContext } from './context/TasksContext';
 import { useValidation } from './hooks/useValidation';
 
-
 function App() {
   //READ
   const { state: tasks, dispatch } = useTasksContext();
+
+  const completedTasks = useMemo (
+    ()=> tasks.filter((task) => task.isCompleted), [tasks]
+  );
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -21,25 +24,25 @@ function App() {
   function createTask(title) {
     const trimmedTitle = title.trim();
 
-      const { valid, message } = useValidation(trimmedTitle, tasks);
+    const { valid, message } = useValidation(trimmedTitle, tasks);
 
-      if (!valid) {
-        setAddErrorMessage(message);
-        return;
-      }
+    if (!valid) {
+      setAddErrorMessage(message);
+      return;
+    }
 
-      dispatch({
-        type: 'ADD',
-        payload: {
-          key: Date.now(),
-          title: trimmedTitle,
-          isCompleted: false,
-        },
-      });
+    dispatch({
+      type: 'ADD',
+      payload: {
+        key: Date.now(),
+        title: trimmedTitle,
+        isCompleted: false,
+      },
+    });
 
-      //Clear the states
-      setAddErrorMessage('');
-      setTitle('');
+    //Clear the states
+    setAddErrorMessage('');
+    setTitle('');
   }
 
   //UPDATE
@@ -47,45 +50,45 @@ function App() {
   // const [newTitle, setNewTitle] = useState('');
   const [editErrorMessage, setEditErrorMessage] = useState('');
 
-  function makeEditable(key) {
-    console.log('making editable');
-    //Save which task is being edited
+  const makeEditable = useCallback ((key) =>{
     setEditingKey(key);
-  }
 
-  function updateTask(key, title) {
-    const trimmedTitle = title.trim();
+  }, [])
 
-      const { valid, message } = useValidation(trimmedTitle, tasks);
+  const updateTask = useCallback ((key, updatedText) => {
+    const trimmedTitle = updatedText.trim();
+    
+    const { valid, message } = useValidation(trimmedTitle, tasks);
 
-      if (!valid) {
-          setEditErrorMessage(message);
-          return;
-        }
+    if (!valid) {
+      setEditErrorMessage(message);
+      return;
+    }  
 
-      dispatch({ type: 'UPDATE', payload: { key: key, title: trimmedTitle } });
+    dispatch({ type: 'UPDATE', payload: { key: key, title: trimmedTitle } });
 
-      setEditingKey('');
-      setEditErrorMessage('');
-    }
+    setEditingKey('');
+    setEditErrorMessage('');
 
-  function deleteTask(key) {
-    // console.log(tasks)
+  }, [dispatch, tasks]);
+
+  const deleteTask = useCallback((key) => {
     dispatch({ type: 'DELETE', payload: key });
-  }
+  }, [dispatch]);
+  
 
-  function toggleTaskComplete(key) {
-    //Find the task
+  const toggleTaskComplete = useCallback((key) => {
     dispatch({ type: 'TOGGLE_COMPLETE', payload: key });
+    
+  }, [dispatch]);
+
+  function clearCompleted() {
+    dispatch({ type: 'CLEAR_COMPLETED' });
   }
 
-  function clearCompleted (){
-    dispatch({type: 'CLEAR_COMPLETED'})
-  }
-
-  function deleteAll (){
-    dispatch({type: 'DELETE_ALL'})
-  }
+  /* function deleteAll() {
+    dispatch({ type: 'DELETE_ALL' });
+  } */
 
   return (
     <>
@@ -98,36 +101,40 @@ function App() {
         />
 
         <section className="tasks">
-          {tasks.length === 0 && (
-            <p className="tasks__message">This to-do list is empty</p>
-          )}
+          {tasks.length === 0 && <p className="tasks__message">This to-do list is empty</p>}
 
           {tasks &&
             tasks.map((task) => (
               <>
-                 <Task
-                title={task.title}
-                key={task.key}
-                editFunction={() => makeEditable(task.key, task.title)}
-                isEditing={editingKey === task.key} //True if this is the task being edited
-                saveChanges={(updatedText) => updateTask(task.key, updatedText)}
-                errorMessage={editErrorMessage}
-                deleteFunction={() => deleteTask(task.key)}
-                isCompleted={task.isCompleted}
-                toggleCompleteFunction={() => toggleTaskComplete(task.key)}
-              />
+                <Task
+                  title={task.title}
+                  key={task.key}
+                  editFunction={() => makeEditable(task.key, task.title)}
+                  isEditing={editingKey === task.key} //True if this is the task being edited
+                  saveChanges={(updatedText) => updateTask(task.key, updatedText)}
+                  errorMessage={editErrorMessage}
+                  deleteFunction={() => deleteTask(task.key)}
+                  isCompleted={task.isCompleted}
+                  toggleCompleteFunction={() => toggleTaskComplete(task.key)}
+                />
               </>
-            ))
-            }
+            ))}
 
-            {tasks && 
-            (
-              <>
-                <button onClick={deleteAll} className='delete-button'> Delete All</button>
-                
-                <button onClick={clearCompleted} className='delete-button'> Clear Completed Tasks</button>
-              </>
-            )}
+          {/* {tasks && (
+            <>
+              <button onClick={deleteAll} className="delete-button">
+                {' '}
+                Delete All
+              </button>
+            </>
+          )} */}
+
+          {completedTasks.length > 0 && (
+            <button onClick={clearCompleted} className="delete-button">
+                {' '}
+                Clear Completed Tasks
+              </button>
+          )}
         </section>
       </div>
     </>

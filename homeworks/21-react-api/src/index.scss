@@ -158,19 +158,19 @@ $red: rgb(160, 0, 0);
     }
   }
 
-  .delete-button{
-     height: 65px;
-      border: none;
-      cursor: pointer;
-      font-size: 32px;
-      padding-inline: 1rem;
-      border: 1px solid $red;
-      color: $red;
-      background-color: transparent;
-      
-      &:hover{
-        color: $white;
-        background-color: $red;
-      }
+  .delete-button {
+    height: 65px;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    padding-inline: 1rem;
+    border: 1px solid $red;
+    color: $red;
+    background-color: transparent;
+
+    &:hover {
+      color: $white;
+      background-color: $red;
     }
+  }
 }

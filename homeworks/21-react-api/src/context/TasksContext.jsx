@@ -2,7 +2,6 @@ import { createContext, useContext, useReducer } from 'react';
 
 const initialState = []; //Empty array of tasks
 
-
 //Reducer
 function tasksReducer(state, action) {
   switch (action.type) {
@@ -24,10 +23,10 @@ function tasksReducer(state, action) {
 
     case 'CLEAR_COMPLETED':
       return state.filter((task) => !task.isCompleted); //Only keep those who are not completed
-    
-      case 'DELETE_ALL':
-        return state = [];
-    
+
+    case 'DELETE_ALL':
+      return (state = []);
+
     default:
       return state;
   }
