@@ -1,0 +1,137 @@
+import { useEffect, useState } from 'react';
+import AddTask from './components/AddTask';
+import Task from './components/Task';
+import { useTasksContext } from './context/TasksContext';
+import { useValidation } from './hooks/useValidation';
+
+
+function App() {
+  //READ
+  const { state: tasks, dispatch } = useTasksContext();
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]); //Executed when tasks are updated
+
+  //CREATE
+  const [title, setTitle] = useState('');
+  const [addErrorMessage, setAddErrorMessage] = useState('');
+
+  //Add new task
+  function createTask(title) {
+    const trimmedTitle = title.trim();
+
+      const { valid, message } = useValidation(trimmedTitle, tasks);
+
+      if (!valid) {
+        setAddErrorMessage(message);
+        return;
+      }
+
+      dispatch({
+        type: 'ADD',
+        payload: {
+          key: Date.now(),
+          title: trimmedTitle,
+          isCompleted: false,
+        },
+      });
+
+      //Clear the states
+      setAddErrorMessage('');
+      setTitle('');
+  }
+
+  //UPDATE
+  const [editingKey, setEditingKey] = useState('');
+  // const [newTitle, setNewTitle] = useState('');
+  const [editErrorMessage, setEditErrorMessage] = useState('');
+
+  function makeEditable(key) {
+    console.log('making editable');
+    //Save which task is being edited
+    setEditingKey(key);
+  }
+
+  function updateTask(key, title) {
+    const trimmedTitle = title.trim();
+
+      const { valid, message } = useValidation(trimmedTitle, tasks);
+
+      if (!valid) {
+          setEditErrorMessage(message);
+          return;
+        }
+
+      dispatch({ type: 'UPDATE', payload: { key: key, title: trimmedTitle } });
+
+      setEditingKey('');
+      setEditErrorMessage('');
+    }
+
+  function deleteTask(key) {
+    // console.log(tasks)
+    dispatch({ type: 'DELETE', payload: key });
+  }
+
+  function toggleTaskComplete(key) {
+    //Find the task
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: key });
+  }
+
+  function clearCompleted (){
+    dispatch({type: 'CLEAR_COMPLETED'})
+  }
+
+  function deleteAll (){
+    dispatch({type: 'DELETE_ALL'})
+  }
+
+  return (
+    <>
+      <div className="container">
+        <AddTask
+          onAdd={() => createTask(title)}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          errorMessage={addErrorMessage}
+        />
+
+        <section className="tasks">
+          {tasks.length === 0 && (
+            <p className="tasks__message">This to-do list is empty</p>
+          )}
+
+          {tasks &&
+            tasks.map((task) => (
+              <>
+                 <Task
+                title={task.title}
+                key={task.key}
+                editFunction={() => makeEditable(task.key, task.title)}
+                isEditing={editingKey === task.key} //True if this is the task being edited
+                saveChanges={(updatedText) => updateTask(task.key, updatedText)}
+                errorMessage={editErrorMessage}
+                deleteFunction={() => deleteTask(task.key)}
+                isCompleted={task.isCompleted}
+                toggleCompleteFunction={() => toggleTaskComplete(task.key)}
+              />
+              </>
+            ))
+            }
+
+            {tasks && 
+            (
+              <>
+                <button onClick={deleteAll} className='delete-button'> Delete All</button>
+                
+                <button onClick={clearCompleted} className='delete-button'> Clear Completed Tasks</button>
+              </>
+            )}
+        </section>
+      </div>
+    </>
+  );
+}
+
+export default App;
