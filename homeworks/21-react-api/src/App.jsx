@@ -9,6 +9,12 @@ import { useKeyPress } from './hooks/useKeyPress';
 
 function App() {
   const {total, completed, remaining} = useTasksStats();
+  const [title, setTitle] = useState('');
+  const [addErrorMessage, setAddErrorMessage] = useState('');
+  const [editingKey, setEditingKey] = useState('');
+  // const [newTitle, setNewTitle] = useState('');
+  const [editErrorMessage, setEditErrorMessage] = useState('');  const [generalErrorMessage, setGeneralErrorMessage] = useState(''); 
+  const isEnterPressed = useKeyPress('Enter');
 
   //READ
   const { state: tasks, dispatch } = useTasksContext();
@@ -17,16 +23,12 @@ function App() {
     ()=> tasks.filter((task) => task.isCompleted), [tasks]
   );
 
+  //Loading tasks
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]); //Executed when tasks are updated
 
   //CREATE
-  const [title, setTitle] = useState('');
-  const [addErrorMessage, setAddErrorMessage] = useState('');
-
- 
-
   //Add new task
   const createTask = useCallback((title) => {
   const trimmedTitle = title.trim();
@@ -38,23 +40,27 @@ function App() {
       return;
     }
 
-    dispatch({
-      type: 'ADD',
-      payload: {
-        key: Date.now(),
-        title: trimmedTitle,
-        isCompleted: false,
-      },
-    });
+    try{
+      dispatch({
+            type: 'ADD',
+            payload: {
+              key: Date.now(),
+              title: trimmedTitle,
+              isCompleted: false,
+            },
+          });
 
-    //Clear the states
-    setAddErrorMessage('');
-    setTitle('');
-  }, [tasks, dispatch,]);
+          //Clear the states
+          setAddErrorMessage('');
+          setTitle('');
+    } catch(err){
+      setGeneralErrorMessage('Something when wrong while adding the task');
+      console.log('Error adding task: ', err);
+    }
+   
+  }, [tasks, dispatch]);
 
   //Add when pressing  enter
-  const isEnterPressed = useKeyPress('Enter');
-
   useEffect(() => {
     if (isEnterPressed) {
       createTask(title);
@@ -62,9 +68,7 @@ function App() {
   }, [isEnterPressed,  title, createTask]); 
 
   //UPDATE
-  const [editingKey, setEditingKey] = useState('');
-  // const [newTitle, setNewTitle] = useState('');
-  const [editErrorMessage, setEditErrorMessage] = useState('');
+  
 
   const makeEditable = useCallback ((key) =>{
     setEditingKey(key);
@@ -74,22 +78,32 @@ function App() {
   const updateTask = useCallback ((key, updatedText) => {
     const trimmedTitle = updatedText.trim();
     
-    const { valid, message } = useValidation(trimmedTitle, tasks);
+    const { valid, message } = useValidation(trimmedTitle, tasks, key);
 
     if (!valid) {
       setEditErrorMessage(message);
       return;
     }  
 
-    dispatch({ type: 'UPDATE', payload: { key: key, title: trimmedTitle } });
+    try{
+      dispatch({ type: 'UPDATE', payload: { key: key, title: trimmedTitle } });
 
-    setEditingKey('');
-    setEditErrorMessage('');
-
+      setEditingKey('');
+      setEditErrorMessage('');
+    } catch(err){
+      setGeneralErrorMessage("Something went wrong while editing the task.")
+      console.log("Error editing task: ", err);
+    }
+   
   }, [dispatch, tasks]);
 
   const deleteTask = useCallback((key) => {
-    dispatch({ type: 'DELETE', payload: key });
+    try{
+      dispatch({ type: 'DELETE', payload: key });
+    } catch (err){
+      setGeneralErrorMessage(`Something went wrong while deleting the task.`);
+      console.log('Error deleting task: ', err)
+    }
   }, [dispatch]);
   
 
@@ -117,19 +131,27 @@ function App() {
         />
 
         <section className="tasks">
-          <div className='stats'> 
-            
-            {completed == total ? (
-              <p>All tasks completed. You can clear the list.</p>
-            ): (
-              <p>{completed} out of {total} tasks completed</p>
-            )}
-          </div>
+          {generalErrorMessage && (
+            <p className='general-error'>{generalErrorMessage}</p>
+          )}
+
+          {
+            total > 0 && (
+              <div className='stats'> 
+                {completed === total ? (
+                  <p>All tasks completed. You can clear the list.</p>
+                ): (
+                  <p>{completed} out of {total} tasks completed</p>
+                )}
+              </div>
+            )
+          }
+
           {tasks.length === 0 && <p className="tasks__message">This to-do list is empty</p>}
 
           {tasks &&
             tasks.map((task) => (
-              <>
+              
                 <Task
                   title={task.title}
                   key={task.key}
@@ -141,7 +163,7 @@ function App() {
                   isCompleted={task.isCompleted}
                   toggleCompleteFunction={() => toggleTaskComplete(task.key)}
                 />
-              </>
+              
             ))}
 
           {/* {tasks && (

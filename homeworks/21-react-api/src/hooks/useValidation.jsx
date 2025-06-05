@@ -1,4 +1,5 @@
-export function useValidation(title, tasks) {
+
+export function useValidation(title, tasks, currentKey = null) {
   const trimmedTitle = title.trim();
 
   if (trimmedTitle.length === 0) {
@@ -9,7 +10,7 @@ export function useValidation(title, tasks) {
     return { valid: false, message: 'This task is too long. Maximum of 20 characters' };
   }
 
-  const isDuplicate = tasks.some((task) => task.title === trimmedTitle);
+  const isDuplicate = tasks.some((task) => task.title === trimmedTitle && task.key !== currentKey );
 
   if (isDuplicate) {
     return { valid: false, message: 'This task is already in the list' };
