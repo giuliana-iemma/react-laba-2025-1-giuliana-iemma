@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$background-gradient: linear-gradient(116.67deg, #8c72b7 0.58%, rgba(192, 46, 195, 0) 101.02%);
+$light: #ecf3ff;
+$white: #ffffff;
+$blue: #5275a0;
+$hind-siliguri-font: 'Hind Siliguri', sans-serif;
+
+.container {
+  background: $background-gradient;
+  width: 100%;
+  min-height: 100vh;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 99px;
+  font-family: $hind-siliguri-font;
+}
+
+.add-task {
+  .add-task__error {
+    font-size: 24px;
+  }
+
+  .add-task__container {
+    display: flex;
+    flex-direction: row;
+    height: 65px;
+
+    .add-task__input {
+      width: 554px;
+      background-color: $light;
+      height: 65px;
+      border: none;
+      font-size: 32px;
+      padding-left: 1rem;
+    }
+
+    .add-task__button {
+      font-family: $hind-siliguri-font;
+      background-color: $blue;
+      width: 122px;
+      height: 65px;
+      font-size: 32px;
+      color: $white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.tasks {
+  margin-top: 81px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 47px;
+
+  .tasks__message {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .task {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+
+    &.task--completed{
+      opacity: 50%;
+    }
+
+    .task__button--check {
+      width: 65px;
+      height: 65px;
+      border: 1px solid $white;
+      background-color: transparent;
+      margin-right: 1rem;
+    }
+
+    .task__title {
+      display: block;
+      width: 554px;
+      height: 65px;
+      background-color: $light;
+      font-family: $hind-siliguri-font;
+      font-size: 32px;
+      padding-left: 1rem;
+    }
+
+    .task__input{
+      width: 554px;
+      background-color: $light;
+      height: 65px;
+      border: none;
+      background-color: $white;
+      font-size: 32px;
+      padding-left: 1rem;
+    }
+
+    .task__error{
+      font-size: 24px;
+    }
+
+    .task__buttons{
+      display: flex;
+    }
+
+    .task__button {
+      height: 65px;
+      border: none;
+      cursor: pointer;
+      font-size: 32px;
+
+
+      &.task__button--text{
+        background-color: $blue;
+        color: $white;
+        padding-inline: 1rem;
+        width: fit-content;
+      }
+
+      &.task__button--icon{
+        width: 65px;
+        background-color: transparent;
+
+        &:hover{
+        background-color: #ecf3ff63;
+      }
+      }
+
+      .button__icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
