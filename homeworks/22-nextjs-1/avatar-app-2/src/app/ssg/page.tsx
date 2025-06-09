@@ -1,4 +1,5 @@
 import AvatarGrid from '@/components/AvatarGrid';
+import Navigation from '@/components/Navigation';
 
 type Tile = {
   id: number;
@@ -27,9 +28,12 @@ export default async function SSGPage() {
   // console.log(initialAvatars)
 
   return (
-    <section>
-      <h1 className="app-title">Avatar App</h1>
-      <AvatarGrid initialTiles={initialAvatars} />
-    </section>
+    <>
+      <Navigation />
+      <section>
+        <h1 className="app-title">Avatar App</h1>
+        <AvatarGrid initialTiles={initialAvatars} />
+      </section>
+    </>
   );
 }
