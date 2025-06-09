@@ -9,7 +9,7 @@ const AvatarCard = ({ avatarUrl, onRefresh }: AvatarCardProps) => {
       <img className="card__image" src={avatarUrl} alt="Avatar" />
 
       <button className="card__button" onClick={onRefresh}>
-        <img className="card__button-icon" src="./src/assets/icons/refresh.svg" alt="Refresh" />
+        <img className="card__button-icon" src="/icons/refresh.svg" alt="Refresh" />
       </button>
     </article>
   );

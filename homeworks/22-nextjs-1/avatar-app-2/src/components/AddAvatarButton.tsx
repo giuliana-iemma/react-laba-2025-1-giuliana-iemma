@@ -7,7 +7,7 @@ type AddAvatarButtonProps = {
 const AddAvatarButton = ({ onClick }: AddAvatarButtonProps) => {
   return (
     <button className="button-add" onClick={onClick}>
-      <img className="button-add__icon" src="./src/assets/icons/add.svg" alt="Add" />
+      <img className="button-add__icon" src="/icons/add.svg" alt="Add" />
     </button>
   );
 };

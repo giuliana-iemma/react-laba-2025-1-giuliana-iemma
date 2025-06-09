@@ -1,15 +1,22 @@
+'use client';
+
 import { useState } from 'react';
 import AddAvatarButton from './AddAvatarButton';
 import AvatarCard from './AvatarCard';
 import RefreshAllButton from './RefreshAllButton';
 
-const AvatarGrid = () => {
-  type Tile = {
-    id: number;
-    url: string;
-  };
-  //Will represent avatars in an array of objects {id: , url: }
-  const [tiles, setTiles] = useState<Tile[]>([]);
+type Tile = {
+  id: number;
+  url: string;
+};
+
+//Initial avatars
+type AvatarGridProps = {
+  initialTiles?: Tile[];
+};
+
+const AvatarGrid = ({ initialTiles = [] }: AvatarGridProps) => {
+  const [tiles, setTiles] = useState<Tile[]>(initialTiles);
 
   async function getRandomAvatarUrl() {
     const res = await fetch('https://tinyfac.es/api/data?limit=50&quality=0');

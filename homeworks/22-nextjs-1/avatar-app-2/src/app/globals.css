@@ -1,42 +1,113 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-a {
-  color: inherit;
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.app-title {
+  display: none;
+}
+
+.card {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+}
+
+.card__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  height: 100%;
+}
+
+.card__button-icon {
+  width: 100px;
+}
+
+.card:hover button {
+  opacity: 1;
+}
+
+.button-add {
+  width: 240px;
+  height: 240px;
+  border: 4px solid #02cc67;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button-add:hover {
+  background-color: #02cc6711;
+}
+
+.button-refresh {
+  background-color: #02cc67;
+  border: none;
+  min-width: 240px;
+  min-height: 40px;
+  border-radius: 3px;
+  color: white;
+  font-weight: 400;
+  font-size: 21px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 40px;
+}
+
+.navigation{
+  padding: 1rem;
+  display: flex;
+  /* gap: 2rem; */
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  background-color: #fcfcfc;
+  border-bottom: 1px solid #02cc67;
+}
+
+.navigation__link{
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+  color: #025f31;
+  font-weight: 500;
+  padding-inline: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
