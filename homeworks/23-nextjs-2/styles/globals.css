@@ -1,0 +1,44 @@
+.countries{
+  display: flex;
+  float: row;
+  list-style: none;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.country{
+  width: 15%;
+}
+
+.country__link{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+    justify-content: center;
+  display: flex;
+  background-color: beige;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+.country__image{
+  width: 100px;
+}
+
+
+.country__title{
+  font-size: 22px;
+}
+
+.like__icon{
+  width: 24px;
+}
+
+.like__button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}

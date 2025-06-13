@@ -1,0 +1,57 @@
+import React from 'react'
+import CountryDetail from '@/components/CountryDetail';
+
+type Country = {
+    name: {common: string}
+    flags: {svg: string}
+    capital: string[]
+    region: string
+    population: number
+    languages?: Record<string, string>
+    currencies?: Record<string, {name: string; symbol: string}>
+    // borders?: string[] //List of codes of borders
+}
+
+type Props = {
+    country: Country
+}
+
+export default function Country ({country}: Props) {
+
+
+    return (
+        <>
+        <CountryDetail name={country.name.common} flags={country.flags.svg} capital={country.capital} region={country.region} population={country.population} languages={country.languages} currencies={country.currencies} />
+        </>
+     
+    )
+}
+
+export async function getStaticPaths() {
+    const res = await fetch('https://restcountries.com/v3.1/all?fields=name');
+
+    const data = await res.json();
+
+    const paths = data.map((country: any) => ({
+        params: {name : country.name.common}
+    }))
+
+    return{
+        paths,
+        fallback: false
+    }
+}
+
+export async function getStaticProps ({params} : any) {
+    const name = params.name; //Take the name from the URL
+
+    const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+
+    const data = await res.json();
+
+    console.log(data);
+    
+    return{
+        props: {country: data[0]}
+    }
+}
