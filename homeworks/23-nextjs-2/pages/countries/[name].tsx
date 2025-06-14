@@ -33,7 +33,7 @@ export async function getStaticPaths() {
     const data = await res.json();
 
     const paths = data.map((country: any) => ({
-        params: {name : country.name.common}
+        params: {name : country.name.common.toLowerCase()}
     }))
 
     return{

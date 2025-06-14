@@ -3,6 +3,8 @@ import CountryCard from '@/components/CountryCard'
 import RegionsFilter from '@/components/RegionsFilter'
 import Link from 'next/link'
 import SearchBar from '@/components/SearchBar'
+import Header from '@/components/Header'
+
 //Get countries
 type Country ={
   name: {common: string}
@@ -21,7 +23,7 @@ export default function HomePage ({countries, regions}: Props) {
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [favorites, setFavorites] = useState<string[]>([]); 
-    
+  const [searchQuery, setSearchQuery] = useState ('');
   //Add favorites
   const toggleFavorite = (countryName: string) => {
     let updatedFavorites: string[]
@@ -41,15 +43,20 @@ export default function HomePage ({countries, regions}: Props) {
   //Filter by region
   useEffect(() => {
     const fetchData = async () => {
-        if (selectedRegion === 'All'){
-        setFilteredCountries(countries);
-        return;
-      }
      
       try {
-          const res = await fetch(`/api/region?region=${selectedRegion}`)
-          const data = await res.json();
-          setFilteredCountries(data);
+        let data = countries;
+
+          if (selectedRegion !== 'All'){
+            const res = await fetch(`/api/region?region=${selectedRegion}`)
+            data = await res.json();
+          }
+         
+          const filtered = data.filter((country: Country) =>
+            country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+
+          setFilteredCountries(filtered);
       } catch (err) {
         console.error('Error loading region: ', err );
         setFilteredCountries([])
@@ -58,7 +65,7 @@ export default function HomePage ({countries, regions}: Props) {
 
     fetchData();
 
-  },[selectedRegion, countries]);
+  },[selectedRegion, countries, searchQuery]);
 
   //Load favorites
   useEffect(() => {
@@ -70,9 +77,19 @@ export default function HomePage ({countries, regions}: Props) {
 
   return (
         <>
-          <h1>Country Explorer</h1>
+          <Header 
+            title="Explore the World, "
+            titleAccent=' One Country at a Time'
+          />
 
-          <RegionsFilter regions={regions} selectedRegion={selectedRegion} onSelectRegion={setSelectedRegion}/>
+          <section className="actions-container">
+              <SearchBar searchQuery={searchQuery} onChange={setSearchQuery} finalValue={searchQuery}/>
+
+               <RegionsFilter regions={regions} selectedRegion={selectedRegion} onSelectRegion={setSelectedRegion}/>
+          </section>
+
+
+         
 
             <section className='countries'>
                 {filteredCountries.map((country) => (
@@ -84,8 +101,6 @@ export default function HomePage ({countries, regions}: Props) {
               ))}
             </section>
         </>
-    
-       
   )
 }
 

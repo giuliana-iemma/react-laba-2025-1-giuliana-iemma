@@ -1,21 +1,39 @@
 import React from 'react'
+import Link from 'next/link'
 
 type Props = {
-    searchQuery?: string
+    searchQuery: string
     onChange: (value:string) => void
 }
 
 const SearchBar = ({searchQuery, onChange} : Props) => {
   return (
-    <div>
+    <section className='searchbar'>
 
-      <input
+      <div className='searchbar__field'>
+        <img className='searchbar__icon' src="/icons/world.svg" alt="Search" />
+
+        <input
+        className='searchbar__input'
         type="text"
         placeholder="Search by country name..."
         value={searchQuery}
         onChange={(e) => onChange(e.target.value)}
         />
-    </div>
+
+          
+          {/* If there is something written in the input. show the button */}
+            {searchQuery && (
+              <Link className='searchbar__button' href={`/countries/${searchQuery}`}>
+                {/* <button className="searchbar__button">Search</button> */} Search
+              </Link>
+            )}
+       
+      </div>
+      
+
+          
+    </section>
   )
 }
 
