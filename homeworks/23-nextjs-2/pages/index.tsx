@@ -78,12 +78,13 @@ export default function HomePage ({countries, regions}: Props) {
   return (
         <>
           <Header 
-            title="Explore the World, "
+            title="Explore the World,"
             titleAccent=' One Country at a Time'
           />
 
-          <section className="actions-container">
+          <section className="actions">
               <SearchBar searchQuery={searchQuery} onChange={setSearchQuery} finalValue={searchQuery}/>
+              <Link className='actions__link' href="/favorites">See favorites</Link>
 
                <RegionsFilter regions={regions} selectedRegion={selectedRegion} onSelectRegion={setSelectedRegion}/>
           </section>

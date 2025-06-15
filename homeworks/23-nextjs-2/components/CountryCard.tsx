@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-
+import Image from 'next/image'
 
 type Props = {
     name: string
@@ -24,8 +24,11 @@ const CountryCard = ({ name, flags, region, isFavorite, onToggleFavorite }: Prop
       
       </div>
       
-      <Link className='country__link' href={`/countries/${name}`}>
-        <img className='country__image' src={flags} alt={name} />
+      <Link className='country__link' href={`/countries/${name.toLowerCase()}`}>
+          <div className='country__image-wrapper'>
+          <Image className='country__image' src={flags} alt={name} fill/>
+          </div>
+
         <span className='country__title'>{name} - {region}</span>
       </Link>
     </article>

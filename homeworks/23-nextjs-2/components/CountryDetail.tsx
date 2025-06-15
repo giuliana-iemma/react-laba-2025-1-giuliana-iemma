@@ -13,27 +13,26 @@ type Props = {
 
 const CountryDetail = ({name, flags, region, population, languages, currencies, capital}: Props) => {
   return (
-    <section>
-     <h1>Let's visit {name}</h1>
-          <img src={flags} alt={`Flag of ${name}`} />
-          <ul>
-            <li>Capital: {capital[0]}</li>
-            <li>Region: {region}</li>
-            <li>Population: {population.toLocaleString()}</li>
+    <section className='detail'>
+          <img className='detail__image' src={flags} alt={`Flag of ${name}`} />
+
+          <ul className='detail__information'>
+            <li className='detail__fact'>Capital <span className='detail__data'>{capital[0]}</span>  </li>
+            <li className='detail__fact'>Region <span className='detail__data'>{region}</span>  </li>
+            <li className='detail__fact'>Population <span className='detail__data'>{population.toLocaleString()}</span> </li>
 
             {languages && (
-                <li>Languages: 
-                {Object.values(languages).join(', ')}
+                <li className='detail__fact'>Languages: 
+                 <span className='detail__data'>{Object.values(languages).join(', ')}</span> 
                 </li>
             )}
             
             {currencies && (
-                <li>Currencies: 
-                {Object.values(currencies).map((currency) => `${currency.name} (${currency.symbol})`)}
+                <li className='detail__fact'>Currencies: 
+                 <span className='detail__data'>{Object.values(currencies).map((currency) => `${currency.name} (${currency.symbol})`)}</span> 
                 </li>
             )}
       
-                {/* Borders */}
           </ul>
     </section>
   )

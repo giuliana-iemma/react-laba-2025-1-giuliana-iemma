@@ -7,14 +7,14 @@ type Props = {
 }
 
 const SearchBar = ({searchQuery, onChange} : Props) => {
-  return (
-    <section className='searchbar'>
+  const country = searchQuery.toLowerCase();
 
-      <div className='searchbar__field'>
+  return (
+      <section className='searchbar'>
         <img className='searchbar__icon' src="/icons/world.svg" alt="Search" />
 
         <input
-        className='searchbar__input'
+        className='searchbar__field'
         type="text"
         placeholder="Search by country name..."
         value={searchQuery}
@@ -24,16 +24,15 @@ const SearchBar = ({searchQuery, onChange} : Props) => {
           
           {/* If there is something written in the input. show the button */}
             {searchQuery && (
-              <Link className='searchbar__button' href={`/countries/${searchQuery}`}>
+              <Link className='searchbar__button' href={`/countries/${country}`}>
                 {/* <button className="searchbar__button">Search</button> */} Search
               </Link>
             )}
        
-      </div>
+      </section>
       
 
           
-    </section>
   )
 }
 

@@ -12,7 +12,7 @@ export default function RegionsFilter ({regions, selectedRegion, onSelectRegion}
         <button className='regions-nav__button' onClick={()=> onSelectRegion('All')}>All</button>
         
         {regions.map((region) => (
-          <button key={region} onClick={()=> onSelectRegion(region)}>{region}</button>
+          <button className='regions-nav__button' key={region} onClick={()=> onSelectRegion(region)}>{region}</button>
         ))}
     </section>
   )

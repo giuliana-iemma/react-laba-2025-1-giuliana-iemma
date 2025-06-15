@@ -1,5 +1,6 @@
 import React from 'react'
 import CountryDetail from '@/components/CountryDetail';
+import Header from '@/components/Header';
 
 type Country = {
     name: {common: string}
@@ -21,6 +22,8 @@ export default function Country ({country}: Props) {
 
     return (
         <>
+        <Header title="Let's visit" titleAccent={country.name.common}/>
+
         <CountryDetail name={country.name.common} flags={country.flags.svg} capital={country.capital} region={country.region} population={country.population} languages={country.languages} currencies={country.currencies} />
         </>
      

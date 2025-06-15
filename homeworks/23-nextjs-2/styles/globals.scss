@@ -1,0 +1,237 @@
+*{
+  padding:0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+  $background-light: #F7F6F4;
+  $background-accent-light: #fefefe;
+  $primary-light: #29323B;
+  $tertiary-light: #1F2034;
+  $secondary-light: #5E5D59;
+  $accent-light: #5A69E7;
+  $primary-transparency: #29323b10;
+  $shadow-light: 2px 2px 10px $primary-transparency;
+
+
+.app-container{
+  background-color: $background-light;
+  font-size: 18px;
+}
+
+.main-container{
+  padding-inline: 3rem;
+}
+
+.hero{
+  background-color: $background-accent-light;
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 3rem;
+}
+
+.hero__title{
+  font-size: 56px;
+  font-weight: 600;
+  color: $tertiary-light;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.hero__title--accent{
+  color: $accent-light;
+  font-weight: 800;
+}
+
+.actions{
+  background-color: $background-accent-light;
+  padding-block: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar{
+  border-radius: 10rem;
+  border: $accent-light 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 1rem;
+}
+
+.searchbar__field{
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.searchbar__field:focus{
+  outline: none;
+}
+
+.searchbar__icon{
+  width: 2rem;
+}
+
+.searchbar__button{
+  height: 100%;
+  color: $background-light;
+  background-color: $accent-light;
+  text-decoration: none;
+  display: inline-block;
+  padding: 1.2rem;
+  position: relative;
+  right: 0;
+  border-bottom-right-radius: 10rem;
+  border-top-right-radius: 10rem;
+}
+
+.actions__link{
+  display: inline-block;
+    padding: .5rem;
+    text-align: center;
+    margin-block: 1rem;
+    color: $tertiary-light;
+  font-weight: 500;
+}
+
+.regions-nav{
+  display: flex;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.regions-nav__button{
+  padding: .5rem;
+  border: none;
+  border-radius: 10rem;
+  font-size: 18px;
+  padding-inline: 1.5rem;
+  transition: all ease 300ms;
+  cursor: pointer;
+}
+
+.regions-nav__button:hover{
+  box-shadow: inset 0 0 0 1px $accent-light
+}
+
+.regions-nav__button:active{
+  background-color: $accent-light;
+  color: $background-light;
+}
+
+.countries{
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  padding-inline: 1rem;
+}
+
+.country{
+  width: 15%;  
+  background-color: $background-accent-light;
+  padding: 1rem;
+  box-shadow: $shadow-light;
+  border-radius: 1rem;
+}
+
+.country__link{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  align-items:center;
+  text-align: center;
+  gap: 1rem;
+  display: flex;
+  color: #29323B;
+  text-decoration: none;
+}
+.country__image-wrapper{
+ position: relative;
+  width: 100%;
+  height: 100px;
+}
+
+.country__image{
+  width: 80%;
+  object-fit: contain;
+}
+
+.country__title{
+  font-size: 22px;
+}
+
+.like{
+  position: absolute;
+  z-index: 1;
+  background-color: $background-accent-light;
+  padding: .3rem;
+    border-radius: 10rem;
+
+}
+
+.like__icon{
+  width: 24px;
+}
+
+.like__button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+      display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.detail{
+  display: flex;gap: 2rem;
+  padding: 1rem;
+  justify-content:space-between;
+  border-radius: 1rem;
+  width: 80%;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.detail__image{
+  width: 50%;
+}
+
+.detail__information{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  height: 100%;
+  column-gap: 3rem;
+  padding-block: 2rem;
+}
+
+.detail__data{
+  font-size: 32px;
+  width: fit-content;
+}
+
+.detail__fact{
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  min-width: 25%;
+  background-color: $background-accent-light;
+  padding: 1rem;
+  border-radius: 1rem;
+  gap: .5rem;
+}
+
