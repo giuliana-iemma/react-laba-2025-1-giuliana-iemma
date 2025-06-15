@@ -1,6 +1,7 @@
 import React from 'react';
 import CountryDetail from '@/components/CountryDetail';
 import Header from '@/components/Header';
+import { GetStaticPropsContext } from 'next';
 
 type Country = {
   name: { common: string };
@@ -40,7 +41,7 @@ export async function getStaticPaths() {
 
   const data = await res.json();
 
-  const paths = data.map((country: any) => ({
+  const paths = data.map((country: Country) => ({
     params: { name: country.name.common.toLowerCase() },
   }));
 
@@ -50,8 +51,8 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: any) {
-  const name = params.name; //Take the name from the URL
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const name = context.params?.name as string;
 
   const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
 
