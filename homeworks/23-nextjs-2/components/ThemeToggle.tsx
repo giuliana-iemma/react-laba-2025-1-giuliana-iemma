@@ -14,7 +14,5 @@ export default function ThemeToggle() {
         <img src="/icons/moon.svg" alt="Dark Mode" />
       )}
     </button>
-
-    
   );
 }

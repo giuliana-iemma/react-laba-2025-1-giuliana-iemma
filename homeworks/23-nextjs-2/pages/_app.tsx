@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ['latin'] })
 function AppContainer({ Component, pageProps }: AppProps) {
   const { theme } = useTheme(); 
 
-
  return (
  <main className={`${inter.className}` }>
       <Component {...pageProps} />

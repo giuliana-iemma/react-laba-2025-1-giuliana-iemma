@@ -6,25 +6,27 @@
 
   $background-light: #F7F6F4;
   $background-accent-light: #fefefe;
-  $primary-light: #29323B;
-  $tertiary-light: #1F2034;
+  $primary-light: #2c293b;
+  $tertiary-light: #271f34;
   $secondary-light: #5E5D59;
   $accent-light: #5A69E7;
-  $primary-transparency: #29323b10;
+  $primary-transparency: #30293b10;
   $shadow-light: 2px 2px 10px $primary-transparency;
+  $background-dark: #44505d;
+  $background-accent-dark:  #29323B;
+  $primary-dark: #F7F6F4;
+  $secondary-dark: #7176a7;
+  $tertiary-dark: #ece1ff;
+  $accent-dark: #4851a2;
 
 
 .app-container{
-  background-color: $background-light;
   font-size: 18px;
-}
-
-.main-container{
+  .main-container{
   padding-inline: 3rem;
 }
 
 .hero{
-  background-color: $background-accent-light;
   min-height: 10rem;
   display: flex;
   align-items: center;
@@ -32,22 +34,19 @@
   padding-block: 3rem;
 }
 
-.hero__title{
+.hero__title{                                       
   font-size: 56px;
-  font-weight: 600;
-  color: $tertiary-light;
+  font-weight: 600;         
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
 .hero__title--accent{
-  color: $accent-light;
   font-weight: 800;
 }
 
 .actions{
-  background-color: $background-accent-light;
   padding-block: 3rem;
   display: flex;
   flex-direction: column;
@@ -82,8 +81,6 @@
 
 .searchbar__button{
   height: 100%;
-  color: $background-light;
-  background-color: $accent-light;
   text-decoration: none;
   display: inline-block;
   padding: 1.2rem;
@@ -98,7 +95,6 @@
     padding: .5rem;
     text-align: center;
     margin-block: 1rem;
-    color: $tertiary-light;
   font-weight: 500;
 }
 
@@ -122,11 +118,6 @@
   box-shadow: inset 0 0 0 1px $accent-light
 }
 
-.regions-nav__button:active{
-  background-color: $accent-light;
-  color: $background-light;
-}
-
 .countries{
   display: flex;
   list-style: none;
@@ -139,9 +130,7 @@
 
 .country{
   width: 15%;  
-  background-color: $background-accent-light;
   padding: 1rem;
-  box-shadow: $shadow-light;
   border-radius: 1rem;
 }
 
@@ -153,7 +142,6 @@
   text-align: center;
   gap: 1rem;
   display: flex;
-  color: #29323B;
   text-decoration: none;
 }
 .country__image-wrapper{
@@ -193,7 +181,6 @@
   align-items: center;
 }
 
-
 .detail{
   display: flex;gap: 2rem;
   padding: 1rem;
@@ -229,9 +216,132 @@
   flex-direction: column;
   font-size: 16px;
   min-width: 25%;
-  background-color: $background-accent-light;
   padding: 1rem;
   border-radius: 1rem;
   gap: .5rem;
 }
+}
 
+.app-container.app-container--light{
+  background-color: $background-light;
+
+  .hero{
+    background-color: $background-accent-light;
+  }
+
+  .hero__title{
+      color: $tertiary-light;
+  }
+
+  .hero__title--accent{
+      color: $accent-light;
+  }
+
+  .actions{
+      background-color: $background-accent-light;
+  }
+
+  .searchbar__button{
+      color: $background-light;
+     background-color: $accent-light;
+  }
+
+  .searchbar__field{
+    color: $primary-light;
+  }
+
+  .actions__link{
+      color: $tertiary-light;
+  }
+
+  .regions-nav__button{
+    background-color: $background-light;
+  }
+  .regions-nav__button:active{
+  background-color: $accent-light;
+  color: $background-light;
+}
+
+.country{
+    background-color: $background-accent-light;
+    box-shadow: $shadow-light;
+}
+
+.country__link{
+    color: $primary-light;
+
+}
+  
+.detail__fact{
+    background-color: $background-accent-light;
+}
+}
+
+.app-container.app-container--dark{
+    background-color: $background-dark;
+
+
+  .hero{
+    background-color: $background-accent-dark;
+  }
+
+  .hero__title{
+      color: $tertiary-dark;
+  }
+
+  .hero__title--accent{
+      color: $secondary-dark;
+  }
+
+  .actions{
+      background-color: $background-accent-dark;
+  }
+
+  .searchbar{
+    background-color: $primary-dark;
+    border: $primary-dark
+  }
+
+  .searchbar__button{
+    color: $background-dark;
+     background-color: $accent-dark;
+     color: $primary-dark;
+  }
+
+  .searchbar__field{
+    color: $background-accent-dark;
+  }
+
+
+  .actions__link{
+      color: $tertiary-dark;
+  }
+
+  .regions-nav__button{
+    background-color: $tertiary-dark;
+  }
+
+  .regions-nav__button:hover{
+    outline: 1px solid $accent-dark
+  }
+
+  .regions-nav__button:active{
+  background-color: $accent-dark;
+  color: $background-dark;
+}
+
+.country{
+    background-color: $background-accent-dark;
+    box-shadow: $shadow-light;
+}
+
+.country__link{
+    color: $primary-dark;
+
+}
+  
+.detail__fact{
+    background-color: $background-accent-dark;
+}
+
+}

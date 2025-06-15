@@ -18,7 +18,7 @@ export function ThemeProvider ({children} :{children: React.ReactNode}){
         const preferredTheme = localStorage.getItem("theme") as Theme;
         if (preferredTheme) {
             setTheme(preferredTheme);
-            document.body.className = `app-container $app-container--${theme}`;
+            document.body.className = `app-container app-container--${theme}`;
         } else {
             localStorage.setItem("theme", theme);
         }
@@ -27,6 +27,8 @@ export function ThemeProvider ({children} :{children: React.ReactNode}){
     //If the theme changes, we update it in LS
     useEffect(() => {
     localStorage.setItem("theme", theme);
+    document.body.className = `app-container app-container--${theme}`;
+
   }, [theme]);
 
   const toggleTheme = () => {
