@@ -1,60 +1,65 @@
-import React from 'react'
+import React from 'react';
 import CountryDetail from '@/components/CountryDetail';
 import Header from '@/components/Header';
 
 type Country = {
-    name: {common: string}
-    flags: {svg: string}
-    capital: string[]
-    region: string
-    population: number
-    languages?: Record<string, string>
-    currencies?: Record<string, {name: string; symbol: string}>
-    // borders?: string[] //List of codes of borders
-}
+  name: { common: string };
+  flags: { svg: string };
+  capital: string[];
+  region: string;
+  population: number;
+  languages?: Record<string, string>;
+  currencies?: Record<string, { name: string; symbol: string }>;
+  // borders?: string[] //List of codes of borders
+};
 
 type Props = {
-    country: Country
-}
+  country: Country;
+};
 
-export default function Country ({country}: Props) {
+export default function Country({ country }: Props) {
+  return (
+    <>
+      <Header title="Let's visit" titleAccent={country.name.common} />
 
-
-    return (
-        <>
-        <Header title="Let's visit" titleAccent={country.name.common}/>
-
-        <CountryDetail name={country.name.common} flags={country.flags.svg} capital={country.capital} region={country.region} population={country.population} languages={country.languages} currencies={country.currencies} />
-        </>
-     
-    )
+      <CountryDetail
+        name={country.name.common}
+        flags={country.flags.svg}
+        capital={country.capital}
+        region={country.region}
+        population={country.population}
+        languages={country.languages}
+        currencies={country.currencies}
+      />
+    </>
+  );
 }
 
 export async function getStaticPaths() {
-    const res = await fetch('https://restcountries.com/v3.1/all?fields=name');
+  const res = await fetch('https://restcountries.com/v3.1/all?fields=name');
 
-    const data = await res.json();
+  const data = await res.json();
 
-    const paths = data.map((country: any) => ({
-        params: {name : country.name.common.toLowerCase()}
-    }))
+  const paths = data.map((country: any) => ({
+    params: { name: country.name.common.toLowerCase() },
+  }));
 
-    return{
-        paths,
-        fallback: false
-    }
+  return {
+    paths,
+    fallback: false,
+  };
 }
 
-export async function getStaticProps ({params} : any) {
-    const name = params.name; //Take the name from the URL
+export async function getStaticProps({ params }: any) {
+  const name = params.name; //Take the name from the URL
 
-    const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+  const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
 
-    const data = await res.json();
+  const data = await res.json();
 
-    console.log(data);
-    
-    return{
-        props: {country: data[0]}
-    }
+  console.log(data);
+
+  return {
+    props: { country: data[0] },
+  };
 }

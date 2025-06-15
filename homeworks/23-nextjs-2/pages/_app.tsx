@@ -1,21 +1,22 @@
-import "@/styles/globals.scss";
+import '@/styles/globals.scss';
 import { Inter } from 'next/font/google';
-import { ThemeProvider, useTheme } from "@/context/ThemeContext";
-import type { AppProps } from "next/app";
+import { ThemeProvider, useTheme } from '@/context/ThemeContext';
+import type { AppProps } from 'next/app';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 function AppContainer({ Component, pageProps }: AppProps) {
-  const { theme } = useTheme(); 
+  const { theme } = useTheme();
 
- return (
- <main className={`${inter.className}` }>
+  return (
+    <main className={`${inter.className}`}>
       <Component {...pageProps} />
-  </main>)
+    </main>
+  );
 }
 
-export default function App(props: AppProps){
-    return (
+export default function App(props: AppProps) {
+  return (
     <ThemeProvider>
       <AppContainer {...props} />
     </ThemeProvider>
