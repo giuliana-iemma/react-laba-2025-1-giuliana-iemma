@@ -22,6 +22,8 @@
 
 .app-container{
   font-size: 18px;
+  transition: all ease 200ms;
+
   .main-container{
   padding-inline: 3rem;
 }
@@ -32,6 +34,7 @@
   align-items: center;
   justify-content: center;
   padding-block: 3rem;
+  flex-direction: column;
 }
 
 .hero__title{                                       
@@ -46,12 +49,45 @@
   font-weight: 800;
 }
 
+.hero__text{
+  margin-top: 1rem;
+}
+
+.hero__cta{
+  padding: .5rem;
+  text-decoration: none;
+  margin-top:2rem;
+  border-radius: 10rem;
+  padding-inline: 1rem;
+}
+
 .actions{
   padding-block: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.toggle-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.toggle{
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: all ease 300ms;
+
+  .toggle__icon{
+    width: 28px;
+  }
 }
 
 .searchbar{
@@ -95,7 +131,8 @@
     padding: .5rem;
     text-align: center;
     margin-block: 1rem;
-  font-weight: 500;
+  font-weight: 400;
+  transition: color ease 300ms;
 }
 
 .regions-nav{
@@ -237,8 +274,26 @@
       color: $accent-light;
   }
 
+  .hero__text{
+    color: $primary-light
+  }
+
+  .hero__cta{
+    background-color: $accent-light;
+    color: $background-accent-light;
+  }
+
   .actions{
       background-color: $background-accent-light;
+  }
+
+  .toggle{
+      background-color: $background-light;
+
+      &:hover{
+        background-color: $background-accent-light;
+        border: 1px solid $accent-light;
+      }
   }
 
   .searchbar__button{
@@ -252,6 +307,10 @@
 
   .actions__link{
       color: $tertiary-light;
+
+      &:hover{
+        color: $accent-light;
+      }
   }
 
   .regions-nav__button{
@@ -293,8 +352,25 @@
       color: $secondary-dark;
   }
 
+  .hero__text{
+    color: $primary-dark;
+  }
+
+  .hero__cta{
+    background-color: $accent-dark;
+    color: $primary-dark;
+  }
   .actions{
       background-color: $background-accent-dark;
+  }
+
+  .toggle{
+    background-color: $background-dark;
+
+    &:hover{
+      border: 1px solid $secondary-dark;
+      background-color: $background-accent-dark;
+    }
   }
 
   .searchbar{
@@ -315,6 +391,10 @@
 
   .actions__link{
       color: $tertiary-dark;
+      &:hover{
+        color: $secondary-dark;
+      }
+
   }
 
   .regions-nav__button{

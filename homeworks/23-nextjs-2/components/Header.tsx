@@ -1,17 +1,21 @@
 import React from 'react'
 import ThemeToggle from './ThemeToggle'
+import Link from 'next/link'
 
 type Props = {
     title: string
     titleAccent?: string
     text?: string
+    ctaLabel?: string
+    ctaTarget?: string
 }
 
 
-const Header = ({title, titleAccent}: Props) => {
+
+const Header = ({title, titleAccent, text, ctaLabel, ctaTarget}: Props) => {
   return (
     <header className='hero'>
-      <div>
+      <div className='toggle-container'>
         <ThemeToggle/>
       </div>
 
@@ -22,6 +26,16 @@ const Header = ({title, titleAccent}: Props) => {
             )
         }
       </h1>
+
+        {text && (
+          <p className='hero__text'>{text}</p>
+        )}
+
+       {ctaLabel && ctaTarget && (
+          <Link className='hero__cta' href={ctaTarget}>
+            {ctaLabel}
+          </Link>
+        )}
     </header>
   )
 }

@@ -1,13 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export default function Custom404()  {
     return(
         <>
-         <h1>404 - Country not found</h1>
-        <p>Oops! The country you`re looking for doesn’t seem to exist.</p>
+        <Header title="404 - Country not found" text="Oops! The country you`re looking for doesn’t seem to exist." ctaTarget="/" ctaLabel="Back to Home"/>
 
-        <Link href="/">Back to Home</Link>
         </>
        
     )

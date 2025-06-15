@@ -9,9 +9,9 @@ export default function ThemeToggle() {
     className={`toggle toggle--${theme}`}
     >
       {theme === 'dark' ? (
-        <img src="/icons/sun-white.svg" alt="Light mode" />
+        <img className="toggle__icon"  src="/icons/sun-white.svg" alt="Light mode" />
       ) : (
-        <img src="/icons/moon.svg" alt="Dark Mode" />
+        <img  className="toggle__icon" src="/icons/moon-purple.svg" alt="Dark Mode" />
       )}
     </button>
   );
