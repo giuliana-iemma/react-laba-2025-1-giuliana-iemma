@@ -2,11 +2,11 @@ import React from 'react';
 
 type Props = {
   regions: string[];
-  selectedRegion: string;
+  // selectedRegion: string;
   onSelectRegion: (region: string) => void;
 };
 
-export default function RegionsFilter({ regions, selectedRegion, onSelectRegion }: Props) {
+export default function RegionsFilter({ regions, onSelectRegion }: Props) {
   return (
     <section className="regions-nav">
       <button className="regions-nav__button" onClick={() => onSelectRegion('All')}>
