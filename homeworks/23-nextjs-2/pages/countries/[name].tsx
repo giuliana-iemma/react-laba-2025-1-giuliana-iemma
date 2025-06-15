@@ -42,7 +42,7 @@ export async function getStaticPaths() {
   const data = await res.json();
 
   const paths = data.map((country: Country) => ({
-    params: { name: country.name.common.toLowerCase() },
+    params: { name: encodeURIComponent(country.name.common.toLowerCase()) },
   }));
 
   return {
@@ -52,11 +52,23 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const name = context.params?.name as string;
+  const name = decodeURIComponent(context.params?.name as string);
 
   const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
 
+  if (!res.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
   const data = await res.json();
+
+  if (!data || data.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
 
   console.log(data);
 

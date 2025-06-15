@@ -23,7 +23,7 @@ const CountryCard = ({ name, flags, region, isFavorite, onToggleFavorite }: Prop
         </button>
       </div>
 
-      <Link className="country__link" href={`/countries/${name.toLowerCase()}`}>
+      <Link className="country__link" href={`/countries/${encodeURIComponent(name.toLowerCase())}`}>
         <div className="country__image-wrapper">
           <Image className="country__image" src={flags} alt={name} fill />
         </div>

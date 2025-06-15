@@ -23,7 +23,7 @@ const SearchBar = ({ searchQuery, onChange }: Props) => {
 
       {/* If there is something written in the input. show the button */}
       {searchQuery && (
-        <Link className="searchbar__button" href={`/countries/${country}`}>
+        <Link className="searchbar__button" href={`/countries/${encodeURIComponent(country)}`}>
           {/* <button className="searchbar__button">Search</button> */} Search
         </Link>
       )}

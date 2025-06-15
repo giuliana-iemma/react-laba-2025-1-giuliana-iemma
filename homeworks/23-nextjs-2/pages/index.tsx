@@ -85,7 +85,7 @@ export default function HomePage({ countries, regions }: Props) {
 
         <RegionsFilter
           regions={regions}
-          selectedRegion={selectedRegion}
+          // selectedRegion={selectedRegion}
           onSelectRegion={setSelectedRegion}
         />
       </section>
@@ -111,7 +111,7 @@ export async function getStaticProps() {
   const res = await fetch('https://restcountries.com/v3.1/all?fields=name,flags,region');
   const data = await res.json();
 
-  const regions = [...new Set(data.map((item) => item.region))].filter(Boolean);
+  const regions = [...new Set(data.map((item: Country) => item.region))].filter(Boolean);
 
   return {
     props: {

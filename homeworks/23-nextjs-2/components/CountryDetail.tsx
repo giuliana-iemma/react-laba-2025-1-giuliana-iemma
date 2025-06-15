@@ -25,9 +25,12 @@ const CountryDetail = ({
       <img className="detail__image" src={flags} alt={`Flag of ${name}`} />
 
       <ul className="detail__information">
-        <li className="detail__fact">
-          Capital <span className="detail__data">{capital[0]}</span>{' '}
-        </li>
+        {capital?.length > 0 && (
+          <li className="detail__fact">
+            Capital <span className="detail__data">{capital[0]}</span>
+          </li>
+        )}
+
         <li className="detail__fact">
           Region <span className="detail__data">{region}</span>{' '}
         </li>
