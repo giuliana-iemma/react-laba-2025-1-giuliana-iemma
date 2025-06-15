@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import CountryCard from '@/components/CountryCard';
 import RegionsFilter from '@/components/RegionsFilter';
 import Link from 'next/link';
@@ -78,7 +78,7 @@ export default function HomePage({ countries, regions }: Props) {
       <Header title="Explore the World," titleAccent=" One Country at a Time" />
 
       <section className="actions">
-        <SearchBar searchQuery={searchQuery} onChange={setSearchQuery} finalValue={searchQuery} />
+        <SearchBar searchQuery={searchQuery} onChange={setSearchQuery} />
         <Link className="actions__link" href="/favorites">
           See favorites
         </Link>
