@@ -1,11 +1,22 @@
+'use client';
+
 import { useState } from 'react';
-import AddTileButton from './AddTileButton';
+import AddAvatarButton from './AddAvatarButton';
 import AvatarCard from './AvatarCard';
 import RefreshAllButton from './RefreshAllButton';
 
-const AvatarGrid = () => {
-  //Will represent avatars in an array of objects {id: , url: }
-  const [tiles, setTiles] = useState([]);
+type Tile = {
+  id: number;
+  url: string;
+};
+
+//Initial avatars
+type AvatarGridProps = {
+  initialTiles?: Tile[];
+};
+
+const AvatarGrid = ({ initialTiles = [] }: AvatarGridProps) => {
+  const [tiles, setTiles] = useState<Tile[]>(initialTiles);
 
   async function getRandomAvatarUrl() {
     const res = await fetch('https://tinyfac.es/api/data?limit=50&quality=0');
@@ -27,7 +38,7 @@ const AvatarGrid = () => {
   }
 
   //Refreshing a targetted avatar
-  async function handleRefreshCard(id) {
+  async function handleRefreshCard(id: number) {
     const avatar = await getRandomAvatarUrl();
 
     setTiles((prev) => prev.map((tile) => (tile.id === id ? { ...tile, url: avatar } : tile)));
@@ -59,7 +70,7 @@ const AvatarGrid = () => {
             />
           ))}
 
-        <AddTileButton onClick={() => handleAddTile()} />
+        <AddAvatarButton onClick={() => handleAddTile()} />
       </div>
 
       <RefreshAllButton onClick={() => handleRefreshAll()} />
