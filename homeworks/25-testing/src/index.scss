@@ -74,7 +74,7 @@ $hind-siliguri-font: 'Hind Siliguri', sans-serif;
     flex-direction: row;
     align-items: start;
 
-    &.task--completed{
+    &.task--completed {
       opacity: 50%;
     }
 
@@ -96,7 +96,7 @@ $hind-siliguri-font: 'Hind Siliguri', sans-serif;
       padding-left: 1rem;
     }
 
-    .task__input{
+    .task__input {
       width: 554px;
       background-color: $light;
       height: 65px;
@@ -106,11 +106,11 @@ $hind-siliguri-font: 'Hind Siliguri', sans-serif;
       padding-left: 1rem;
     }
 
-    .task__error{
+    .task__error {
       font-size: 24px;
     }
 
-    .task__buttons{
+    .task__buttons {
       display: flex;
     }
 
@@ -120,21 +120,20 @@ $hind-siliguri-font: 'Hind Siliguri', sans-serif;
       cursor: pointer;
       font-size: 32px;
 
-
-      &.task__button--text{
+      &.task__button--text {
         background-color: $blue;
         color: $white;
         padding-inline: 1rem;
         width: fit-content;
       }
 
-      &.task__button--icon{
+      &.task__button--icon {
         width: 65px;
         background-color: transparent;
 
-        &:hover{
-        background-color: #ecf3ff63;
-      }
+        &:hover {
+          background-color: #ecf3ff63;
+        }
       }
 
       .button__icon {
