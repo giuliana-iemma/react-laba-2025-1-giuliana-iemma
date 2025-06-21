@@ -64,7 +64,6 @@ function App() {
 
   //UPDATE
   const [editingKey, setEditingKey] = useState('');
-  // const [newTitle, setNewTitle] = useState('');
   const [editErrorMessage, setEditErrorMessage] = useState('');
 
   function makeEditable(key) {
@@ -74,7 +73,6 @@ function App() {
   }
 
   function updateTask(key, title) {
-    // const targetTask = tasks.find((task)=> task.key === key);
     const trimmedTitle = title.trim();
     const taskExists = tasks.some((task) => task.title === trimmedTitle && task.key !== key);
     const isValid = /^[a-zA-Z0-9\s]+$/.test(trimmedTitle);

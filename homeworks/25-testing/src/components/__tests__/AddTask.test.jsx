@@ -6,7 +6,7 @@ import { render, screen, fireEvent, cleanup, getByTestId } from '@testing-librar
 afterEach(cleanup);
 
 const defaultProps = {
-  onAdd: jest.fn(), //Create a mock function
+  onAdd: jest.fn(), 
   value: 'Go to the groceries',
   errorMessage: '',
   onChange: jest.fn(),
@@ -47,7 +47,6 @@ describe('AddTask behaviour', () => {
 
   test('show error message only if there is an error', () => {
     //The errorMessage should only be rendered if the prop has a value other than empty
-
     render(<AddTask {...defaultProps} errorMessage="Please enter a task" />);
 
     expect(screen.getByText('Please enter a task')).toBeInTheDocument();
