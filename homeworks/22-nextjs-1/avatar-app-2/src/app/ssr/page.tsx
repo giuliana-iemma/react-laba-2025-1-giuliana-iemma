@@ -10,8 +10,6 @@ export default async function SSGPage() {
 
   const data = await res.json();
 
-  // console.log(data);
-
   const initialAvatars: Tile[] = [];
 
   for (let i = 0; i < 5; i++) {
@@ -23,8 +21,6 @@ export default async function SSGPage() {
       url: avatar.url,
     });
   }
-
-  // console.log(initialAvatars)
 
   return (
     <>

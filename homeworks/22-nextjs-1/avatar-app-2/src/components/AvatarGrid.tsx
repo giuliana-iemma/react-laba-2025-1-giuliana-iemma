@@ -33,8 +33,6 @@ const AvatarGrid = ({ initialTiles = [] }: AvatarGridProps) => {
     const avatar = await getRandomAvatarUrl();
 
     setTiles((prev) => [...prev, { id: Date.now(), url: avatar }]);
-
-    // console.log(tiles);
   }
 
   //Refreshing a targetted avatar
