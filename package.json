@@ -14,7 +14,9 @@
   "description": "",
   "devDependencies": {
     "@eslint/js": "^9.21.0",
-    "eslint": "^9.21.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@typescript-eslint/parser": "^8.34.0",
+    "eslint": "^9.28.0",
     "eslint-config-prettier": "^10.1.2",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
