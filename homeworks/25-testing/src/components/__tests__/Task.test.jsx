@@ -1,38 +1,36 @@
 import React from 'react';
 import Task from '../Task';
-import "@testing-library/jest-dom";
-import {render, screen, fireEvent, cleanup, getByTestId} from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { render, screen, fireEvent, cleanup, getByTestId } from '@testing-library/react';
 
 const defaultProps = {
-    title: "Test Task",
-    editFunction: jest.fn(),
-    deleteFunction: jest.fn(),
-    toggleCompleteFunction: jest.fn(),
-    isEditing: false,
-    saveChanges: jest.fn(),
-    errorMessage: '',
-    isCompleted: false,
-}
+  title: 'Test Task',
+  editFunction: jest.fn(),
+  deleteFunction: jest.fn(),
+  toggleCompleteFunction: jest.fn(),
+  isEditing: false,
+  saveChanges: jest.fn(),
+  errorMessage: '',
+  isCompleted: false,
+};
 
-afterEach(cleanup)
+afterEach(cleanup);
 
+describe('Task rendering and props', () => {
+  test('renders correctly', () => {
+    render(<Task title="Test Task" isCompleted={false} />);
 
-describe('Task rendering and props', ()=> {
-    test('renders correctly', () => {
-        render(<Task title="Test Task" isCompleted={false} />);
-        
-        const taskElement = screen.getByText("Test Task");
-        
-        expect(taskElement).toBeInTheDocument();
-    });
+    const taskElement = screen.getByText('Test Task');
 
-    test('renders with not completed state by default', () => {
-        render(<Task {...defaultProps} />);
+    expect(taskElement).toBeInTheDocument();
+  });
 
-        const iconButton = screen.queryByTestId("task-check-button");
-        const icon = iconButton.querySelector('img')
+  test('renders with not completed state by default', () => {
+    render(<Task {...defaultProps} />);
 
-        expect(icon).toHaveAttribute('src', './src/assets/icons/check-unchecked.png');
-    });
+    const iconButton = screen.queryByTestId('task-check-button');
+    const icon = iconButton.querySelector('img');
 
-})
+    expect(icon).toHaveAttribute('src', './src/assets/icons/check-unchecked.png');
+  });
+});
