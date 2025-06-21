@@ -16,6 +16,7 @@ const Task = ({
 
   return (
     <article className={isCompleted ? ' task task--completed' : 'task'}>
+     
       <IconButton
         className="task__button task__button--check"
         icon={isCompleted === true ? `check-checked.png` : `check-unchecked.png`}
