@@ -12,7 +12,6 @@ function App() {
   const [title, setTitle] = useState('');
   const [addErrorMessage, setAddErrorMessage] = useState('');
   const [editingKey, setEditingKey] = useState('');
-  // const [newTitle, setNewTitle] = useState('');
   const [editErrorMessage, setEditErrorMessage] = useState('');  const [generalErrorMessage, setGeneralErrorMessage] = useState(''); 
   const isEnterPressed = useKeyPress('Enter');
 
@@ -116,9 +115,6 @@ function App() {
     dispatch({ type: 'CLEAR_COMPLETED' });
   }
 
-  /* function deleteAll() {
-    dispatch({ type: 'DELETE_ALL' });
-  } */
 
   return (
     <>
@@ -166,14 +162,6 @@ function App() {
               
             ))}
 
-          {/* {tasks && (
-            <>
-              <button onClick={deleteAll} className="delete-button">
-                {' '}
-                Delete All
-              </button>
-            </>
-          )} */}
 
           {completedTasks.length > 0 && (
             <button onClick={clearCompleted} className="delete-button">

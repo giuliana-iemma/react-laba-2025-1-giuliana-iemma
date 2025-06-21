@@ -37,7 +37,7 @@ $red: rgb(160, 0, 0);
     height: 65px;
 
     .add-task__input {
-      width: 554px;
+      width: 100%;
       background-color: $light;
       height: 65px;
       border: none;
@@ -66,12 +66,12 @@ $red: rgb(160, 0, 0);
 }
 
 .tasks {
-  margin-top: 81px;
+  margin-top: 5rem;
+  gap: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 47px;
   color: $almost-black;
 
   .tasks__message {
@@ -182,4 +182,172 @@ $red: rgb(160, 0, 0);
 .general-error{
   color: $red;
   font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-inline: 20px
+  }
+
+  .add-task {
+  .add-task__error {
+    font-size: 18px;
+  }
+
+  .add-task__container {
+    height: 48px;
+
+    .add-task__input {
+      height: 48px;
+      font-size: 24px;
+    }
+
+    .add-task__button {
+      width: 8rem;
+      height: 48px;
+      font-size: 24px;
+    }
+  }
+}
+
+.tasks {
+  width: 100%;
+
+  .tasks__message {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .task {
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    padding: 0;
+    width: 80%;
+
+    &.task--completed {
+      opacity: 50%;
+    }
+
+    .task__button--check {
+      display: flex;
+      align-items: center;
+        .button__icon{
+            width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+
+    .task__title-container{
+      width: 80%;
+       .task__title {
+        width: 100%;
+        height: 48px;
+        font-size: 24px;
+      }
+    }
+
+    .task__input {
+      width: 100%;
+      height: 48px;
+      font-size: 24px;
+      display: flex;;
+    }
+
+    .task__error {
+      font-size: 18px;
+    }
+
+    .task__buttons {
+      display: flex;
+      align-items: center;
+    }
+
+    .task__button {
+      height: 3rem;
+      width: 3rem;
+      cursor: auto;
+      font-size: 24px;
+
+      &.task__button--icon {
+        width: 3rem;
+
+        &:focus {
+          background-color: #ecf3ff63;
+        }
+      }
+    }
+  }
+
+    .delete-button {
+      height: 3rem;
+      font-size: 24px;
+    }
+  }
+
+  .stats{
+    font-size: 18px;
+  }
+
+  .general-error{
+    font-size: 18px;
+  } 
+  
+}
+
+@media (max-width: 550px){
+  .container {
+    max-width: 550px;
+    padding-inline: 20px;
+  }
+
+  .add-task {
+    width: 100%;
+    
+    .add-task__container {
+      flex-direction: column;
+      gap: 1rem;
+        height: fit-content;
+
+
+      .add-task__input {
+        font-size: 18px;
+        height: 40px;
+      }
+
+      .add-task__button {
+        font-size: 18px;
+        height: 40px;
+        width: 100%;
+      }
+    }
+  }
+
+  .tasks {
+    .task {
+      width: 100%;      
+
+    .task__buttons{
+        justify-content: flex-end;
+        margin-top: auto;
+      .task__button{
+        font-size: 18px;
+      }
+    }
+  }
+
+  .stats{
+    font-size: 16px;
+  }
+
+  .general-error{
+    font-size: 16px;
+  } 
+  
+     .delete-button {
+      height: 3rem;
+      font-size: 18px;
+    }
+  }
 }
