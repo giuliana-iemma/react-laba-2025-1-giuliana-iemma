@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import IconButton from './IconButton';
 
 const Task = ({
@@ -17,6 +17,7 @@ const Task = ({
   return (
     <article className={isCompleted ? ' task task--completed' : 'task'}>
       <IconButton
+        data-testid="task-check-button"
         className="task__button task__button--check"
         icon={isCompleted === true ? `check-checked.png` : `check-unchecked.png`}
         onClick={toggleCompleteFunction}
