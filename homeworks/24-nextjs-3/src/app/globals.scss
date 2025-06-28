@@ -1,0 +1,425 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+    font-family: var(--font-inter);
+
+}
+:root {
+  --font-inter: 'Inter', sans-serif;
+}
+
+$background-light: #f7f6f4;
+$background-accent-light: #fefefe;
+$primary-light: #2c293b;
+$tertiary-light: #271f34;
+$secondary-light: #5e5d59;
+$accent-light: #5a69e7;
+$primary-transparency: #30293b10;
+$shadow-light: 2px 2px 10px $primary-transparency;
+$background-dark: #44505d;
+$background-accent-dark: #29323b;
+$primary-dark: #f7f6f4;
+$secondary-dark: #7176a7;
+$tertiary-dark: #ece1ff;
+$accent-dark: #4851a2;
+
+.app-container {
+  font-size: 18px;
+  transition: all ease 200ms;
+
+  .main-container {
+    padding-inline: 3rem;
+  }
+
+  .hero {
+    min-height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 3rem;
+    flex-direction: column;
+  }
+
+  .hero__title {
+    font-size: 56px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero__title--accent {
+    font-weight: 800;
+  }
+
+  .hero__text {
+    margin-top: 1rem;
+  }
+
+  .hero__cta {
+    padding: 0.5rem;
+    text-decoration: none;
+    margin-top: 2rem;
+    border-radius: 10rem;
+    padding-inline: 1rem;
+  }
+
+  .actions {
+    padding-block: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toggle-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    align-items: center;
+  }
+
+  .toggle {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all ease 300ms;
+
+    .toggle__icon {
+      width: 28px;
+    }
+  }
+
+  .searchbar {
+    border-radius: 10rem;
+    border: $accent-light 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 1rem;
+  }
+
+  .searchbar__field {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+
+  .searchbar__field:focus {
+    outline: none;
+  }
+
+  .searchbar__icon {
+    width: 2rem;
+  }
+
+  .searchbar__button {
+    height: 100%;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1.2rem;
+    position: relative;
+    right: 0;
+    border-bottom-right-radius: 10rem;
+    border-top-right-radius: 10rem;
+  }
+
+  .actions__link {
+    display: inline-block;
+    padding: 0.5rem;
+    text-align: center;
+    margin-block: 1rem;
+    font-weight: 400;
+    transition: color ease 300ms;
+  }
+
+  .regions-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .regions-nav__button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 10rem;
+    font-size: 18px;
+    padding-inline: 1.5rem;
+    transition: all ease 300ms;
+    cursor: pointer;
+  }
+
+  .regions-nav__button:hover {
+    box-shadow: inset 0 0 0 1px $accent-light;
+  }
+
+  .countries {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    justify-content: space-evenly;
+    padding-inline: 1rem;
+  }
+
+  .country {
+    width: 15%;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .country__link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    display: flex;
+    text-decoration: none;
+  }
+  .country__image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100px;
+  }
+
+  .country__image {
+    width: 80%;
+    object-fit: contain;
+  }
+
+  .country__title {
+    font-size: 22px;
+  }
+
+  .like {
+    position: absolute;
+    z-index: 1;
+    background-color: $background-accent-light;
+    padding: 0.3rem;
+    border-radius: 10rem;
+  }
+
+  .like__icon {
+    width: 24px;
+  }
+
+  .like__button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .detail {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    justify-content: space-between;
+    border-radius: 1rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 3rem;
+  }
+
+  .detail__image {
+    width: 50%;
+  }
+
+  .detail__information {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    height: 100%;
+    column-gap: 3rem;
+    padding-block: 2rem;
+  }
+
+  .detail__data {
+    font-size: 32px;
+    width: fit-content;
+  }
+
+  .detail__fact {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    min-width: 25%;
+    padding: 1rem;
+    border-radius: 1rem;
+    gap: 0.5rem;
+  }
+}
+
+.app-container.app-container--light {
+  background-color: $background-light;
+
+  .hero {
+    background-color: $background-accent-light;
+  }
+
+  .hero__title {
+    color: $tertiary-light;
+  }
+
+  .hero__title--accent {
+    color: $accent-light;
+  }
+
+  .hero__text {
+    color: $primary-light;
+  }
+
+  .hero__cta {
+    background-color: $accent-light;
+    color: $background-accent-light;
+  }
+
+  .actions {
+    background-color: $background-accent-light;
+  }
+
+  .toggle {
+    background-color: $background-light;
+
+    &:hover {
+      background-color: $background-accent-light;
+      border: 1px solid $accent-light;
+    }
+  }
+
+  .searchbar__button {
+    color: $background-light;
+    background-color: $accent-light;
+  }
+
+  .searchbar__field {
+    color: $primary-light;
+  }
+
+  .actions__link {
+    color: $tertiary-light;
+
+    &:hover {
+      color: $accent-light;
+    }
+  }
+
+  .regions-nav__button {
+    background-color: $background-light;
+  }
+  .regions-nav__button:active {
+    background-color: $accent-light;
+    color: $background-light;
+  }
+
+  .country {
+    background-color: $background-accent-light;
+    box-shadow: $shadow-light;
+  }
+
+  .country__link {
+    color: $primary-light;
+  }
+
+  .detail__fact {
+    background-color: $background-accent-light;
+  }
+}
+
+.app-container.app-container--dark {
+  background-color: $background-dark;
+
+  .hero {
+    background-color: $background-accent-dark;
+  }
+
+  .hero__title {
+    color: $tertiary-dark;
+  }
+
+  .hero__title--accent {
+    color: $secondary-dark;
+  }
+
+  .hero__text {
+    color: $primary-dark;
+  }
+
+  .hero__cta {
+    background-color: $accent-dark;
+    color: $primary-dark;
+  }
+  .actions {
+    background-color: $background-accent-dark;
+  }
+
+  .toggle {
+    background-color: $background-dark;
+
+    &:hover {
+      border: 1px solid $secondary-dark;
+      background-color: $background-accent-dark;
+    }
+  }
+
+  .searchbar {
+    background-color: $primary-dark;
+    border: $primary-dark;
+  }
+
+  .searchbar__button {
+    color: $background-dark;
+    background-color: $accent-dark;
+    color: $primary-dark;
+  }
+
+  .searchbar__field {
+    color: $background-accent-dark;
+  }
+
+  .actions__link {
+    color: $tertiary-dark;
+    &:hover {
+      color: $secondary-dark;
+    }
+  }
+
+  .regions-nav__button {
+    background-color: $tertiary-dark;
+  }
+
+  .regions-nav__button:hover {
+    outline: 1px solid $accent-dark;
+  }
+
+  .regions-nav__button:active {
+    background-color: $accent-dark;
+    color: $background-dark;
+  }
+
+  .country {
+    background-color: $background-accent-dark;
+    box-shadow: $shadow-light;
+  }
+
+  .country__link {
+    color: $primary-dark;
+  }
+
+  .detail__fact {
+    background-color: $background-accent-dark;
+  }
+}
